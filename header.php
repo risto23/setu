@@ -1,10 +1,10 @@
-<header style="background-color: #000000">
+<header style="background-color: #F6A6F6">
       <div id="test" class="container" > 
           <div class="img-responsive" id="atas1">
-              <img src="Images/iti-transp3.png" alt="institut teknologi indonesia">
+              <img src="Images/logo-tangsel.png" alt="institut teknologi indonesia">
           </div>
           <div id="atas1">
-          <h1>Institut Teknologi Indonesia</h1>
+          <h1>Kelurahan Setu Tangerang Selatan</h1>
           </div>
             <nav id="atas2">
                 <div class="soscon" >
