@@ -1,0 +1,539 @@
+*{
+    padding:0;
+    margin : 0;
+}
+
+/*End Beranda*/
+
+/* underline tittle global*/
+h3:after {
+    width : 200px;
+    
+    height : 2px;
+    background-color : orange;
+    display: block;
+    content : " ";
+    margin: auto;
+    margin-top :20px;
+    border-bottom : 2px solid orange;
+}
+
+.judul{
+    margin-top:10px;
+}
+/*Begin headerr*/
+header{
+    background-color:  #0000;
+    text-align : center;
+    color : white;
+    padding-top:20px;
+    padding-bottom : 20px;
+    min-height : 100px;
+}
+header h1{
+    font-size: 30px;
+    margin-top: 10px;
+}
+header img{
+    width : 80px;
+    height : 80px;
+    margin-top: -10px;
+    margin-left : 10px;
+    margin-right : 10px;
+}
+header ul {
+    margin-top: 0;
+    padding:0;
+}
+header li{
+    float: left;
+    display : inline;
+    padding : 0 10px 0 10px;
+}
+header ul li a{
+    width : 30px;
+    min-height : 30px;
+    background : #fff;
+    text-align:center;
+    line-height: 20px;
+    font-size : 13px;
+    margin : 0px;
+    padding : 3px 0;
+    display : inline-block;
+    border-radius : 25px;
+    position : relative;
+    overflow : hidden;
+    border : 3px solid #fff;  
+}
+header ul li a .fa{
+    color : black;
+    position : relative;
+    transition : .5s;  
+}
+header ul li a:hover .fa{
+    color : black;
+    transform : rotateY(360deg);
+}
+
+header ul li a:before{
+    content : '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height : 100%;
+    background : #f00;
+    transition : .5s;
+}
+
+header ul li a:hover:before{
+    top : 0;
+}
+
+header ul li:nth-child(1) a:before{
+    background : #3b5999 ;
+}
+header ul li:nth-child(2) a:before{
+    background : #55acee ;
+}
+
+header ul li:nth-child(3) a:before{
+    background : #dd4b39;
+}
+
+header ul li:nth-child(4) a:before{
+    background : #bc2a8d;
+}
+
+header #atas1{
+    float : left;
+}
+header #atas2{
+    float : right;
+}
+
+/*End headerr*/
+
+
+
+/*Begin navbar*/
+
+.navbar-brand{
+    margin-left: 20px;
+    float : none;
+}
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link{
+    color : white;
+    border-bottom : 2px solid white;
+}
+.navbar-light .navbar-nav .nav-link{
+    color : white;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+    color : white;
+   border-bottom : 2px solid white;
+}
+.dropdown-menu{
+    background : #37474F;
+    
+    border-bottom : 2px solid white;
+}
+.dropdown-item{
+    color : white;
+}
+.dropdown-item:focus, .dropdown-item:hover{
+    
+    background-color : #37474F;
+    color : white ;
+    border-bottom : 2px solid white;
+}
+
+/*end navbar*/
+
+/*Begin carousel*/
+
+
+.carousel-indicators li{
+    width : 10px;
+    height : 10px;
+    border : 1px solid #fff;
+    border-radius : 50px;
+}
+
+.carousel-control-next, .carousel-control-prev{
+    max-width : 100%;
+    height : auto;
+}
+.carousel-caption{
+    bottom: 40px;
+    background-color : rgba(221, 221, 221, 0.46);   
+}
+
+/*End carousel #FF8800*/
+
+
+/*Begin Berita Kampus*/
+.news-kampus h3{
+    padding: 40px 0 20px 0 ;
+}
+.news-kampus a{
+    margin: 20px 0 20px 0;
+    color:  #00b0ff;
+    text-decoration:none;
+}
+.news-kampus a:hover{
+    color :#0277bd  ;
+}
+.news-kampus a h4:hover{
+    color : #00b0ff;
+    
+}
+.news-kampus h4{
+    
+    margin: 10px 0 20px 0 ;
+    width : 100%;
+    color : black;
+}
+.gambar{
+    text-align: center;
+}
+.mobile{
+    
+    padding: 10px;
+    border-radius: 20px;
+    background : #e0e0e0 ;
+    margin:  10px 30px 10px 30px ;
+}
+/*End Berita Kampus*/
+
+
+/*Begin Footer*/
+.sticky-footer{
+    margin-top: 40px;
+    background : #37474F;
+    color : white;
+}
+.footer{
+    margin: 20px 0 20px 0;
+}
+.footer ul{
+    list-style: none;
+}
+.copyright{
+    margin-top: -10px;
+    font-size : 20px;
+    color :#FF8800;
+}
+/*End-footer*/
+
+
+
+
+
+
+/* Begin-Info-link */
+#wrap { auto;text-align:center;}
+
+
+
+a.btn {font-family:'PT Sans Narrow',text-decoration:none;background:#1C2331;letter-spacing:.5px;padding:5px ;margin:10px;color:#fff;box-shadow:inset 0 0 0 #fff;;border-radius:3px;transition:all 0.3s ease-out; width:100%;}
+a.btn:hover {background:#fff;color:#1C2331;box-shadow:inset 0px -40px 0px #fff;}
+a.btn:active {color:#fff;box-shadow:inset 0px -40px 0px #fff;}
+
+
+
+
+.btn i{
+    float :left;
+    font-size :40px;
+    margin-top : 10px;
+    margin-left :10px;
+   
+}
+.btn a{
+     line-height : normal;
+      color : white;
+      margin-left:-10px;
+    
+    
+}
+/* Begin-Info-link */
+
+
+
+
+
+
+@media(max-width: 768px){
+    header #atas1,
+    header #atas2,
+    header #atas2 li{
+        margin : 10px 0 10px 0;
+        float:none;
+        text-align: center;
+        width : 100%;
+    }
+
+  
+}
+
+
+/*End Beranda*/
+
+/*Begin visi & Misi*/
+.visi  {
+    margin-bottom:40px;
+}
+.misi {
+    margin-bottom:80px
+}
+.misi ul{
+    list-style : decimal;
+    margin-left : 20px;
+}
+
+/*Begin visi & Misi*/
+
+
+/*Begin Sejarah*/
+.quote p:before {
+    width : 100%;
+    
+    height : 2px;
+    background-color : gainsboro;
+    display: block;
+    content : " ";
+    margin: auto;
+    margin-bottom :20px;
+    border-bottom : 2px solid gainsboro;
+}
+.quote p:after {
+    width : 100%;
+    
+    height : 2px;
+    background-color : gainsboro;
+    display: block;
+    content : " ";
+    margin: auto;
+    margin-top :20px;
+    border-bottom : 2px solid gainsboro;
+}
+.quote p{
+    font-weight: 700;
+    margin-bottom : 40px;
+}
+.short-histo{
+    margin: 40px 0 60px 0 ;
+}
+.komitmen{
+    margin-bottom: 80px;
+}
+/*End Sejarah*/
+
+
+
+/*Begin Sejarah*/
+.foto img{
+    border-radius : 50%;
+    margin-bottom : 30px;
+}
+.figure1 :after{
+    width : 100%;
+    
+    height : 2px;
+    background-color : #FF8800;
+    display: block;
+    content : " ";
+    margin: auto;
+    margin-top :20px;
+    margin-bottom : 20px;
+    border-bottom : 2px solid #FF8800;
+}
+.figure2 :after{
+     width : 100%;
+    
+    height : 2px;
+    background-color : #FF8800;
+    display: block;
+    content : " ";
+    margin: auto;
+    margin-top :20px;
+    margin-bottom : 20px;
+    border-bottom : 2px solid #FF8800;
+}
+.news-ypti span{
+    font-weight: 700;
+}
+
+.yayasan {
+    margin: 100px 0 100px 0;
+}
+.yayasan ul{
+    list-style:circle;
+    margin-left : 20px;
+}
+/*End Sejarah*/
+
+
+
+
+/*Begin Panduan*/
+.syarat div{
+    margin : 40px 0 40px 0;
+}
+.syarat ul{
+    margin-left: 20px;
+}
+.list-turunan{
+    list-style : decimal;
+}
+/*End Panduan*/
+
+
+/*Bagin T-kim*/
+.selayang ul{
+    margin-left: 30px;
+    
+}
+.under:after{
+    width : 70%;
+    height : 2px;
+    background-color : #FF8800;
+    display: block;
+    content : " ";
+    margin: auto;
+    margin-top :20px;
+    margin-bottom : 20px;
+    border-bottom : 2px solid #FF8800;
+}
+.VTM:after {
+     width : 100%;
+    height : 2px;
+    background-color : #FF8800;
+    display: block;
+    content : " ";
+    margin: auto;
+    margin-top :20px;
+    margin-bottom : 0;
+    border-bottom : 2px solid #FF8800;
+}
+.tujuan ul{
+    margin-left:20px;
+}
+.isi2-tekim ul{
+    list-style : decimal;
+    margin-left : 20px;
+}
+/*End T-kim*/
+
+
+/*Begin T Sipil*/
+.list-number{
+    
+    list-style : decimal;
+    margin-left : 20px;
+}
+/*End Sipil*/
+
+/*login*/
+
+.login {
+    margin-top: 100px;
+    
+}
+.btn-primary{
+    background-color: #FF8800;
+    border : #FF8800;
+}
+.btn-primary:hover{
+     background-color: #e65100 ;
+    border : #e65100 ;
+}
+.anak-login{
+    color : white;
+    background:#1C2331;
+    border : 5px solid #1C2331;
+ 
+    padding: 20px;
+    border-radius: 20px;
+}
+.form-control:hover{
+   
+}
+
+
+
+/*beranda video*/
+.video{
+    background : #37474F;
+    margin : 25px 0 50px 0 ;
+    
+}
+
+.main-content{
+    max-width: 800px;
+    margin : 0 auto;
+    padding : 50px 0 50px;
+}
+.video-responsive{
+   width : 100%;
+    height: 0;
+    padding-bottom : 56.25%;
+    position : relative;
+}
+
+.video-responsive iframe{
+    position : absolute;
+    width : 100%;
+    height : 100%;
+    
+}
+
+/*pen_online*/
+
+.form h5{
+    margin-bottom: 40px;
+}
+
+.form h5:after{
+    
+    width : 200px;
+    
+    height : 2px;
+    background-color : orange;
+    display: block;
+    content : " ";
+    margin: auto;
+    margin-top :20px;
+    border-bottom : 2px solid orange;
+
+}
+
+.btn-form{
+    margin: 20px 0 40px 20px;
+    width:10%;
+    padding:10px;
+    background: #FF8800;
+    border: 2px solid #FF8800;
+    border-radius :10px;
+    float :right;
+    color : white;
+}
+.respon-form label {
+    margin: 10px 0 10px 0;
+}
+
+
+/*Jadwal Ujian*/
+.table th{
+    text-align : center;
+}
+
+.berita{
+    display:inline;
+    background:#cf0;
+    margin:20px;
+    padding:20px;
+    width:50px; /*percuma.. dihapus juga ga apa-apa*/
+    height:500px; /*percuma.. dihapus juga ga apa-apa*/
+}
