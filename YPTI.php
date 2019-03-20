@@ -15,29 +15,10 @@
     
   <body>
           
-  <header>
-      <div id="test" class="container"> 
-          <div class="img-responsive" id="atas1">
-              <img src="Images/iti-transp3.png" alt="institut teknologi indonesia">
-          </div>
-          <div id="atas1">
-          <h1>Institut Teknologi Indonesia</h1>
-          </div>
-            <nav id="atas2">
-            <div class="soscon" >  
-                <ul>                    
-                    <li> <a href="https://id-id.facebook.com/" target="_blank" > <i class="fa fa-sqaure fa-facebook  fa-1x"  ></i> </a> </li> 
-                    <li><a href="https://twitter.com/login?lang=id" target="_blank" > <i class="fa fa-twitter fa-1x" ></i> </a> </li>
-                    <li> <a href="https://plus.google.com/discover?hl=id" target="_blank" > <i class="fa fa-google-plus fa-1x"  ></i> </a> </li> 
-                    <li> <a href="https://www.instagram.com/accounts/login/" target="_blank" > <i class="fa fa-instagram fa-1x"  ></i> </a> </li> 
-                    </ul>          
-                </div>
-            </nav>
-      </div> 
-</header>
  <?php
- include "menu.php"; 
- ?>         
+ include "header.php";
+include "menu.php";
+ ?>
 <section class="isi-ypti">
       <div class="container">
           <h3 class="text-center  " style="margin:50px 0 80px 0;">Sejarah Singkat YPTI</h3>

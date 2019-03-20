@@ -1,4 +1,4 @@
-<header style="background-color: #F6A6F6">
+<header style="background-color: #FF0000">
       <div id="test" class="container" > 
           <div class="img-responsive" id="atas1">
               <img src="Images/logo-tangsel.png" alt="institut teknologi indonesia">

@@ -15,82 +15,10 @@
     
   <body>
        
-  <header> 
-      <div id="test" class="container">        
-          <div class="img-responsive" id="atas1">
-              <img src="Images/iti-transp3.png" alt="institut teknologi indonesia">
-          </div>        
-          <div id="atas1">
-          <h1>Institut Teknologi Indonesia</h1>
-          </div>        
-            <nav id="atas2">
-                <div class="soscon" >           
-                    <ul>                    
-                    <li> <a href="https://id-id.facebook.com/" target="_blank" > <i class="fa fa-sqaure fa-facebook  fa-1x"  ></i> </a> </li> 
-                    <li><a href="https://twitter.com/login?lang=id" target="_blank" > <i class="fa fa-twitter fa-1x" ></i> </a> </li>
-                    <li> <a href="https://plus.google.com/discover?hl=id" target="_blank" > <i class="fa fa-google-plus fa-1x"  ></i> </a> </li> 
-                    <li> <a href="https://www.instagram.com/accounts/login/" target="_blank" > <i class="fa fa-instagram fa-1x"  ></i> </a> </li> 
-                    </ul>               
-                </div>
-            </nav>
-      </div> 
-</header>
-         
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#37474F;">
-    <div class="container">        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item ">
-            <a class="nav-link" href="index.php">Beranda <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Tentang ITI
-            </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="visi&misi.php">Visi & Misi</a>
-          <a class="dropdown-item" href="Sejarah.php">Sejarah</a>
-          <a class="dropdown-item" href="YPTI.php">Tentang YPTI</a>          
-        </div>
-            </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Pendaftaran
-            </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="panduan-pendaftaran.php">Panduan Pendaftaran</a>
-           <a class="dropdown-item" href="pend_online.php">Pendaftaran Online</a>
-          <a class="dropdown-item" href="jadwal.php">Jadwal Ujian</a>          
-        </div>
-            </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Program Studi
-            </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="T-kim.php">Teknik Kimia</a>
-          <a class="dropdown-item" href="Teknik-sipil.php">Teknik Sipil</a>
-          <a class="dropdown-item" href="informatika.php">Informatika</a>
-          <a class="dropdown-item" href="Teknik-industri.php">Teknik Industri</a>
-          <a class="dropdown-item" href="teknik_mesin.php">Teknik Mesin</a>
-          <a class="dropdown-item" href="teknik_elektro.php">Teknik Elektro</a>
-          <a class="dropdown-item" href="arsitektur.php">Arsitektur</a>
-          <a class="dropdown-item" href="TIP.php">Teknologi Industri Pertanian</a>
-          <a class="dropdown-item" href="perencanaa_wil_kot.php">PWK</a>
-          <a class="dropdown-item" href="manajemen.php">Manajemen</a>
-        </div>
-            </li>
-             <li class="nav-item">
-            <a class="nav-link" href="login.php">Login</a>
-            </li>
-        </ul>
-     </div>
-  </div>
-</nav>
-          
+  <?php
+ include "header.php";
+include "menu.php";
+ ?>        
 <section class="isi-teknik-elektro">
       <div class="container">
           <h3 class="text-center  " style="margin:50px 0 80px 0;">Arsitektur</h3>    
