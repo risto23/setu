@@ -110,19 +110,13 @@ session_start();
                         <span class="input-group-addon">
                           <i class="fa fa-user" title="Penulis Berita"> </i>
                         </span>
-                        <select name="id_login" class="form-control">
                           <?php
                           $dataprofil = mysqli_query($koneksi,"select * from login INNER JOIN Artikel ON Artikel.id_login=login.id_login");
                           while ($data=mysqli_fetch_array($dataprofil)) {
-                            if($data['id_login'] == $datanews['id_login'] )
-                            {
+                            $nama=$data['nama'];
+                           }
                           ?>
-                            <option selected value="<?php echo $data['id_login']; ?>"><?php echo $data['nama'] ?></option>
-                          <?php
-                            }
-                          }
-                          ?>
-                        </select>
+                           <input type="text" name="izin" value="<?php echo $nama; ?>" class="form-control" readonly>         
                       </div>
                       <textarea class="textarea" name="news" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"><?php echo $datanews['isi_artikel'];?></textarea>
                       <a href="news.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
@@ -155,8 +149,34 @@ session_start();
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">
+                          <?php 
+                          $login=$_SESSION['user'];
+                            $sql=mysqli_query($koneksi,"select * from login where id_login=$login");
+                            while ($hasil=mysqli_fetch_array($sql)) {
+                              $nama=$hasil['nama'];
+                            }
+                           ?>
                           <i class="fa fa-user" title="Penulis Berita"> </i>
                         </span>
+                         <input type="text" name="izin" value="<?php echo $nama; ?>" class="form-control" readonly>
+                      </div>
+                       <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-user" title="Penulis"> </i>
+                        </span>
+                        <select name="id_login" class="form-control">
+                            <?php
+                            $dataprofil = mysqli_query($koneksi,"select * from login");
+                            while ($data=mysqli_fetch_array($dataprofil)) {
+                              if($data['id_login'] == $datanews['id_login'] )
+                              {
+                            ?>
+                              <option selected value="<?php echo $data['id_login']; ?>"><?php echo $data['nama'] ?></option>
+                            <?php
+                              }
+                            }
+                            ?>
+                          </select>
                       </div>
                       <textarea class="textarea" name="news" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"></textarea>
                       <a href="news.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
@@ -175,6 +195,7 @@ session_start();
                       <th>Gambar</th>
                       <th>Judul Artikel</th>
                       <th>Isi Artikel</th>
+                      <th>Status</th>
                       <th>Action</th>
                     </tr>
                     </thead>
@@ -191,6 +212,18 @@ session_start();
                         <td><img src="news/<?php echo $datanews['gambar']; ?>" width="100px"></td>
                         <td><?php echo $datanews['judul_artikel']; ?></td>
                         <td><?php echo $datanews['isi_artikel'];?></td>
+                        <?php 
+                        $status=$datanews['konfirmasi'];
+                        if($status==1)
+                        {
+                          $konfirmasi="OK";
+                        }
+                        elseif($status==0)
+                        {
+                          $konfirmasi="Pending";
+                        }
+                        ?>
+                        <td><?php echo $konfirmasi;?></td>
                         <td>
                           <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
@@ -200,9 +233,21 @@ session_start();
                               <li>
                                 <a href="form_edit_berita.php?id=<?php echo $datanews['id']; ?>">Edit</a>
                               </li>
+                              <?php 
+                                 $login=$_SESSION['user'];
+                                 if($login==6)
+                                 {
+                                  ?>
+                                  <li>
+                                <a href="form_edit_berita.php?id=<?php echo $datanews['id']; ?>">Konfirmasi</a>
+                                </li>
+                                <?php
+                                 }
+                               ?>
                               <li>
                                 <a href="hapus.php?id_hapus=<?php echo $datanews['id']; ?>">Hapus</a>
                               </li>
+
                             </ul>
                             </div>
                           </td>

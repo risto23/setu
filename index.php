@@ -68,7 +68,7 @@ include "menu.php";
       
             <div class="row justify-content-md-center gambar">
              <?php
-             $kueri = mysqli_query($koneksi," SELECT * FROM Artikel ");
+             $kueri = mysqli_query($koneksi," SELECT * FROM Artikel where konfirmasi='1' ");
               while ($baris=mysqli_fetch_array($kueri)) {
                 $gambar=$baris['gambar'];
                 $judul=$baris['judul_artikel'];
