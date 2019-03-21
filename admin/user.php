@@ -7,7 +7,7 @@ if(empty($_SESSION['user']))
   header('location:beranda.php');
 }
 else {
-  $data = mysqli_query($koneksi,"select * from Login");
+  $data = mysqli_query($koneksi,"select * from login where id_login='$idsession'");
   while($datalogin = mysqli_fetch_array($data))
   {
     $id = $datalogin['id_login'];
@@ -189,7 +189,7 @@ else {
                     <tbody>
                     <?php
                     $no = 1;
-                    $data = mysqli_query($koneksi,"select * from login");
+                    $data = mysqli_query($koneksi,"select * from login where id_login='$idsession'");
                     while($datauser = mysqli_fetch_array($data))
                     {
                     ?>
@@ -198,6 +198,7 @@ else {
                         <td><?php echo $datauser['username']; ?></td>
                         <td><?php echo $datauser['nama']; ?></td>
                         <td><?php echo $datauser['izin']; ?></td>
+                       
                         <td>
                           <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
@@ -207,12 +208,22 @@ else {
                               <li>
                                 <a href="user.php?id=<?php echo $datauser['id_login']; ?>">Edit</a>
                               </li>
+                               <?php 
+                        $login=$_SESSION['user'];
+                                 if($login==6)
+                                 {
+                        ?>
                               <li>
+
                                 <a href="proses_adduser.php?proses_hapus=<?php echo $datauser['id_login']; ?>">Hapus</a>
                               </li>
+                                <?php 
+                          }
+                           ?>
                             </ul>
                             </div>
                           </td>
+                        
                       </tr>
                     <?php
                     $no++;
