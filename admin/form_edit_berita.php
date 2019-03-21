@@ -118,6 +118,22 @@ session_start();
                           ?>
                            <input type="text" name="izin" value="<?php echo $nama; ?>" class="form-control" readonly>         
                       </div>
+                      <?php 
+                      $login=$_SESSION['user'];
+                                 if($login==6)
+                                 {
+                       ?>
+                        <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-book" title="Penulis"> </i>
+                        </span>
+                        <select name="konfirmasi" class="form-control">
+                            <option value="konfirmasi">Konfirmasi</option>
+                            <option value="konfirmasi">Pending</option>
+                          </select>
+                      </div>
+                      <?php 
+                      } ?>
                       <textarea class="textarea" name="news" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"><?php echo $datanews['isi_artikel'];?></textarea>
                       <a href="news.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
                       <button type="submit" name="editnews" class="btn btn-info " style="float: right;">Simpan</button>
@@ -160,24 +176,23 @@ session_start();
                         </span>
                          <input type="text" name="izin" value="<?php echo $nama; ?>" class="form-control" readonly>
                       </div>
-                       <div class="input-group">
+                     
+                        <?php 
+                      $login=$_SESSION['user'];
+                                 if($login==6)
+                                 {
+                       ?>
+                        <div class="input-group">
                         <span class="input-group-addon">
-                          <i class="fa fa-user" title="Penulis"> </i>
+                          <i class="fa fa-book" title="Penulis"> </i>
                         </span>
-                        <select name="id_login" class="form-control">
-                            <?php
-                            $dataprofil = mysqli_query($koneksi,"select * from login");
-                            while ($data=mysqli_fetch_array($dataprofil)) {
-                              if($data['id_login'] == $datanews['id_login'] )
-                              {
-                            ?>
-                              <option selected value="<?php echo $data['id_login']; ?>"><?php echo $data['nama'] ?></option>
-                            <?php
-                              }
-                            }
-                            ?>
+                        <select name="konfirmasi" class="form-control">
+                            <option value="konfirmasi">Konfirmasi</option>
+                            <option value="konfirmasi">Pending</option>
                           </select>
                       </div>
+                      <?php 
+                      } ?>
                       <textarea class="textarea" name="news" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"></textarea>
                       <a href="news.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
                       <button type="submit" name="inputnews" class="btn btn-info " style="float: right;">Simpan</button>
@@ -213,6 +228,7 @@ session_start();
                         <td><?php echo $datanews['judul_artikel']; ?></td>
                         <td><?php echo $datanews['isi_artikel'];?></td>
                         <?php 
+
                         $status=$datanews['konfirmasi'];
                         if($status==1)
                         {
