@@ -62,6 +62,7 @@ include "menu.php";
 
       
       <!-- Berita Kampus -->
+     <!-- Berita Kampus -->
       <section>
       
     <div class="container">
@@ -91,17 +92,81 @@ include "menu.php";
                 </div>
 
                 </div>
-                        
 </section>
-        
-<section class=" video" style="margin:30px 0 80px 0;">
-      <h3 class="text-center" style="padding:20px 0 10px 0; color:white;">Video Testimoni</h3>
+                        
+
+<section style="margin:30px 0 80px 0;">
+      <h3 class="text-center" style="padding:20px 0 10px 0; color:black;">Video Testimoni</h3>
         <div class="main-content">
         <div class="video-responsive">
            <iframe width="560" height="315" src="https://www.youtube.com/embed/wq7A1Iby__I" frameborder="0" allowfullscreen></iframe>
           </div>
          </div>
 </section>        
+ 
+<!-- SECTION -->
+<div class="section" style="padding-top:0; margin-top:0;">
+      <!-- CONTAINER -->
+      <div class="container">
+        <!-- ROW -->
+        <div class="row">
+          <!-- Main Column -->
+          <div class="col-md-12">
+            <!-- row -->
+            <div class="row">
+              <!-- Column 1 -->
+              <div class="col-md-4 col-sm-4 col-lg-4">
+                <!-- section title -->
+                <div class="section-title">
+                  <h2 class="title" ">PELAYANAN ONLINE</h2>
+                </div>
+                <!-- /section title -->
+                <div class="container" style="margin-left: 1em;">
+                  <div class="row">
+<div class="col-md-6 text-left " style="padding: .5em; ">
+  <i class="fa fa-address-card-o"></i>&nbsp;&nbsp;&nbsp;<a href="http://siakcapil.tangerangselatankota.go.id/" target="_blank">PENCATATAN SIPIL</a>
+</div>
+<div class="col-md-6 text-left " style="padding: .5em; ">
+  <i class="fa fa-institution"></i>&nbsp;&nbsp;&nbsp;<a href="https://simponie.tangerangselatankota.go.id/" target="_blank">PERIZINAN</a>
+</div>
+<div class="col-md-6 text-left" style="padding: .5em; ">
+  <i class="fa fa-legal"></i>&nbsp;&nbsp;&nbsp;<a href="http://jdih.tangerangselatankota.go.id/" target="_blank">INFO PRODUK HUKUM</a>
+</div>
+<div class="col-md-6 text-left " style="padding: .5em; ">
+  <i class="fa fa-percent"></i>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://pbb-bphtb.tangerangselatankota.go.id/pbb-pelayanan/" target="_blank">PBB</a>
+</div>
+
+                  </div>
+                </div>
+              </div>
+
+<div class="col-md-4 col-sm-4 col-lg-4">
+                <!-- section title -->
+                <div class="section-title">
+                  <h2 class="title"">PUBLIKASI</h2>
+                </div>
+                <!-- /section title -->
+                Artikel Belum Tersedia ...                            
+            </div>
+<div class="col-md-4 col-sm-4 col-lg-4">
+                <!-- section title -->
+                <div class="section-title">
+                  <h2 class="title" ">PENGUMUMAN</h2>
+                </div>
+                <!-- /section title -->
+                Artikel Belum Tersedia ...                            
+            </div>
+            <!-- /row -->
+            
+          </div>
+          <!-- /Main Column -->
+          
+                  </div>
+        <!-- /ROW -->
+      </div>
+      <!-- /CONTAINER -->
+    </div>
+    <!-- /SECTION -->      
       
 <?php 
 include "footer.php";
