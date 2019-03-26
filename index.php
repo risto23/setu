@@ -66,7 +66,7 @@ include "menu.php";
       <section>
       
     <div class="container">
-      
+       <h3 class="text-center" style="padding:20px 0 10px 0; color:black;">Berita</h3>
             <div class="row justify-content-md-center gambar">
              <?php
              $kueri = mysqli_query($koneksi," SELECT * FROM Artikel where konfirmasi='1' ");
@@ -77,7 +77,7 @@ include "menu.php";
                 ?>
               <div class="col-md-3 mobile">
                   <div class="isi text-center">
-                      <a href="post/post.php?id=<?php echo $baris['id']."&tabel=Artikel"; ?>" ><img src="admin/news/<?php echo $gambar ;?>" width="100px" class="img-responsive"> <h4><?php echo $judul;?></h4></a>
+                      <a href="artikel_detail.php?id=<?php echo $baris['id']; ?>" ><img src="admin/news/<?php echo $gambar ;?>" width="100px" class="img-responsive"> <h4><?php echo $judul;?></h4></a>
                       <div>
                      <?php
                      echo substr($isi, 0,100);
@@ -103,7 +103,7 @@ include "menu.php";
           </div>
          </div>
 </section>        
- 
+ <hr>
 <!-- SECTION -->
 <div class="section" style="padding-top:0; margin-top:0;">
       <!-- CONTAINER -->
