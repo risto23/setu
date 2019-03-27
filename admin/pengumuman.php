@@ -67,145 +67,157 @@ session_start();
           <!-- Input addon -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">News</h3>
+              <h3 class="box-title">Pengumuman</h3>
             </div>
             <div class="box-body">
               <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#input">Input</a></li>
-                <li><a data-toggle="tab" href="#news">News</a></li>
+                <li><a data-toggle="tab" href="#pengumuman">Pengumuman</a></li>
               </ul>
               <div class="tab-content">
                 <div id="input" class="tab-pane fade in active">
+
                   <?php
                   if(isset($_GET['id']))
                   {
-                    $id_news = $_GET['id'];
-                    $datalist = mysqli_query($koneksi,"select * from Pengumuman where id_pengumuman = '$id_news' ");
-                    while($datanews = mysqli_fetch_array($datalist))
-                    {
+                    $id_pengumuman = $_GET['id'];
+                    $datalist = mysqli_query($koneksi,"select * from pengumuman where id_pengumuman='$id_pengumuman' ");
+                    while($datapengumuman = mysqli_fetch_array($datalist))
+                    { 
+                      
                   ?>
-                     <form action="proses_pengumuman.php" method="post" enctype="multipart/form-data">
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-calendar" title="Tanggal Penulis"> </i>
-                      </span>
-                      <input type="date" value="<?php echo date("Y-m-d");?>" readonly name="date_rencana" class="form-control">
-                      <input type="hidden" name="pdf_pengumuman_old" value="<?php echo $datanews['pdf_pengumuman'];?>">
-                      <input type="hidden" name="id_pengumuman" value="<?php echo $datanews['id_pengumuman'];?>">  
-                    </div>
-                    <div class="input-group">
+                    <form action="proses_pengumuman.php" method="post" enctype="multipart/form-data">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-camera" title="Foto"> </i>
+                        </span>
+                        <input name="img_pengumuman" type="file" class="form-control" placeholder="Foto" accept="image/x-png,image/gif,image/jpeg">
+                        <input type="text" class="form-control" value="Jika tidak ingin mengganti foto, biarkan form kosong" readonly="">
+                        <input name="img_pengumuman_old" type="hidden" class="form-control" placeholder="Foto" value="<?php echo $datapengumuman['gambar'];?>">
+                        <input type="hidden" name="id_pengumuman" value="<?php echo $datapengumuman['id_pengumuman'];?>">
+                        <input type="hidden" name="id_login" value="<?php echo $_SESSION['user']; ?>">
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-book" title="Judul Berita"> </i>
+                        </span>
+                        <input name="judul_pengumuman" type="text" class="form-control" placeholder="Judul pengumuman" value="<?php echo $datapengumuman['judul_pengumuman'];?>">
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-calendar" title="Tanggal Pengumuman"> </i>
+                        </span>
+                        <input name="date_pengumuman" type="date" class="form-control" placeholder="Tanggal Pengumuman" value="<?php echo date('Y-m-d');?>" readonly>
+                      </div>
+                     <div class="input-group">
                         <span class="input-group-addon">
                           <i class="fa fa-user" title="Penulis"> </i>
                         </span>
-                        <select name="id_login" class="form-control">
-                            <?php
-                            $dataprofil = mysqli_query($koneksi,"select * from login");
-                            while ($data=mysqli_fetch_array($dataprofil)) {
-                              if($data['id_login'] == $datanews['id_login'] )
-                              {
-                            ?>
-                              <option selected value="<?php echo $data['id_login']; ?>"><?php echo $data['nama'] ?></option>
-                            <?php
-                              }
-                            }
-                            ?>
-                          </select>
+                          <?php
+                          $dataprofil = mysqli_query($koneksi,"select * from login INNER JOIN pengumuman ON pengumuman.id_login=login.id_login");
+                          while ($data=mysqli_fetch_array($dataprofil)) {
+                            $nama=$data['nama'];
+                           }
+                          ?>
+                           <input type="text" name="izin" value="<?php echo $nama; ?>" class="form-control" readonly>         
                       </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-book" title="Judul Pengumuman"> </i>
-                        </span>
-                        <input type="text" name="judul_pengumuman" class="form-control"  value="<?php echo $datanews['judul_rencana'];?>">
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-file-pdf-o" title="Upload Pengumuman"> </i>
-                        </span>
-                        <input id="uploadPDF" type="file" name="pdf_pengumuman" class="form-control" accept="application/pdf">
-                        <input type="text" value="Jika tidak ingin mengganti file, biarkan form kosong" class="form-control" readonly="">
-                    </div>
-                   <a href="pengumuman.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
-                   <input type="button" class="btn btn-warning" value="Preview" style="float: right; margin-left: 10px;" onclick="PreviewImage();" />
-                   <a href="proses_pengumuman.php?id=<?php echo $datanews['id_rencana'];?>" class="btn btn-danger" style="float: right; margin-left: 10px;"> Hapus</a>
-                    <button type="submit" name="editrencana" class="btn btn-info " style="float: right;">Simpan</button>
-                  </form>
-                  <iframe style="margin-top: 20px;" id="viewer" src="news/pdf/<?php echo $datanews['pdf_rencana'];?>" frameborder="0" scrolling="no" width="100%" height="600"></iframe>
+                      <?php 
+                      include "konfirmasi.php";
+                       ?>
+                      <textarea class="textarea" name="pengumuman" placeholder="Silahkan tulis disini" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"><?php echo $datapengumuman['deskripsi'];?></textarea>
+                      <a href="pengumuman.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
+                      <button type="submit" name="editpengumuman" class="btn btn-info " style="float: right;">Simpan</button>
+                    </form>
                   <?php
                     }
                   }
                   else
                   {
                   ?>
-                    <form action="proses_kajianlaporan.php" method="post" enctype="multipart/form-data">
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-calendar" title="Tanggal Penulis"> </i>
-                      </span>
-                      <input type="date" value="<?php echo date("Y-m-d");?>" readonly name="date_rencana" class="form-control">
-                    </div>
-                    <div class="input-group">
+                    <form action="proses_pengumuman.php" method="post" enctype="multipart/form-data">
+                      <div class="input-group">
                         <span class="input-group-addon">
+                          <i class="fa fa-camera" title="Foto Pengumuman"> </i>
+                        </span>
+                        <input name="img_pengumuman" type="file" class="form-control" placeholder="Foto" accept="image/x-png,image/gif,image/jpeg">
+                        <input type="hidden" name="id_login" value="<?php echo $_SESSION['user']; ?>">
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-book" title="Judul Pengumuman"> </i>
+                        </span>
+                        <input name="judul_pengumuman" type="text" class="form-control" placeholder="Judul" value="">
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-calendar" title="Tanggal Pengumuman"> </i>
+                        </span>
+                        <input name="date_pengumuman" type="date" class="form-control" placeholder="Tanggal Pengumuman" value="<?php echo date('Y-m-d');?>" readonly>
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <?php 
+                          $login=$_SESSION['user'];
+                            $sql=mysqli_query($koneksi,"select * from login where id_login=$login");
+                            while ($hasil=mysqli_fetch_array($sql)) {
+                              $nama=$hasil['nama'];
+                            }
+                           ?>
                           <i class="fa fa-user" title="Penulis"> </i>
                         </span>
-                        <select name="id_login" class="form-control">
-                        <?php
-                         $sql = mysqli_query($koneksi,"select * from login");
-                         while($row=mysqli_fetch_array($sql))
-                         {
-                          $nama=$row['nama'];
+                         <input type="text" name="izin" value="<?php echo $nama; ?>" class="form-control" readonly>
+                      </div>
+                     
+                       <?php 
+                       include "konfirmasi.php";
                         ?>
-                          <option value="<?php echo $id; ?>"><?php echo $nama; ?></option>
-                          <?php
-                        }
-                        ?>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-book" title="Judul Rencana Strategis"> </i>
-                        </span>
-                        <input type="text" name="judul_rencana" class="form-control">
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-file-pdf-o" title="Upload Rencana Strategis"> </i>
-                        </span>
-                        <input id="uploadPDF" type="file" required name="pdf_rencana" class="form-control" accept="application/pdf">
-                    </div>
-                   <a href="pengumuman.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
-                   <input type="button" class="btn btn-warning" value="Preview" style="float: right; margin-left: 10px;" onclick="PreviewImage();" />
-                    <button type="submit" name="inputrencana" class="btn btn-info " style="float: right;">Simpan</button>
-                  </form>
-                  <iframe style="margin-top: 20px;" id="viewer" src="" frameborder="0" scrolling="no" width="100%" height="600"></iframe>
+                      <textarea class="textarea" name="pengumuman" placeholder="Silahkan tulis disini" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"></textarea>
+                      <a href="pengumuman.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
+                      <button type="submit" name="inputpengumuman" class="btn btn-info " style="float: right;">Simpan</button>
+                    </form>
                   <?php
                   }
                   ?>
                 </div>
-                <div id="news" class="tab-pane fade">
-                  <table id="table_news" class="table table-bordered table-striped" width="100%">
+                <div id="pengumuman" class="tab-pane fade">
+                  <table id="table_pengumuman" class="table table-bordered table-striped" width="100%">
                     <thead>
                     <tr>
                       <th>No</th>
-                      <th>Tanggal</th>
-                      <th>Judul</th>
-                      <th>PDF</th>
-                      <th>Penulis</th>
+                      <th>Tanggal Pengumuman</th>
+                      <th>Gambar</th>
+                      <th>Judul Pengumuman</th>
+                      <th>Isi Pengumuman</th>
+                      <th>Status</th>
                       <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
                     $no = 1;
-                    $data = mysqli_query($koneksi,"select * from Pengumuman");
-                    while($datanews = mysqli_fetch_array($data))
+                    $data = mysqli_query($koneksi,"select * from pengumuman");
+                    while($datapengumuman = mysqli_fetch_array($data))
                     {
                     ?>
                       <tr>
                         <td><?php echo $no; ?></td>
-                        <td><?php echo fungsi_tgl($datanews['date_pengumuman']); ?></td>
-                        <td><?php echo $datanews['judul_pengumuman']; ?></td>
-                        <td><?php echo $datanews['pdf_pengumuman']?></td>
-                        <td></td>
+                        <td><?php echo fungsi_tgl($datapengumuman['tanggal']); ?></td>
+                        <td><img src="pengumuman/<?php echo $datapengumuman['gambar']; ?>" width="100px"></td>
+                        <td><?php echo $datapengumuman['judul_pengumuman']; ?></td>
+                        <td><?php echo $datapengumuman['deskripsi'];?></td>
+                        <?php 
+
+                        $status=$datapengumuman['konfirmasi'];
+                        if($status==1)
+                        {
+                          $konfirmasi="OK";
+                        }
+                        elseif($status==0)
+                        {
+                          $konfirmasi="Pending";
+                        }
+                        ?>
+                        <td><?php echo $konfirmasi;?></td>
                         <td>
                           <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
@@ -213,8 +225,23 @@ session_start();
                             </button>
                             <ul class="dropdown-menu">
                               <li>
-                                <a href="pengumuman.php?id=<?php echo $datanews['id_pengumuman']; ?>">Edit</a>
+                                <a href="pengumuman.php?id=<?php echo $datapengumuman['id_pengumuman']; ?>">Edit</a>
                               </li>
+                              <?php 
+                                 $login=$_SESSION['user'];
+                                 if($login==6)
+                                 {
+                                  ?>
+                                  <li>
+                                <a href="pengumuman.php?id=<?php echo $datapengumuman['id_pengumuman']; ?>">Konfirmasi</a>
+                                </li>
+                                <?php
+                                 }
+                               ?>
+                              <li>
+                                <a href="hapus.php?id_hapus=<?php echo $datapengumuman['id_pengumuman']; ?>">Hapus</a>
+                              </li>
+
                             </ul>
                             </div>
                           </td>

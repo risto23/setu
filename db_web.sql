@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2019 at 04:46 PM
+-- Generation Time: Mar 27, 2019 at 03:03 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -55,7 +55,8 @@ INSERT INTO `artikel` (`id`, `judul_artikel`, `isi_artikel`, `gambar`, `tanggal`
 CREATE TABLE `kontak` (
   `id_kontak` int(11) NOT NULL,
   `id_login` int(11) NOT NULL,
-  `deskripsi` text NOT NULL
+  `deskripsi` text NOT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -102,7 +103,8 @@ CREATE TABLE `pelayanan` (
   `id_pelayanan` int(11) NOT NULL,
   `id_login` int(11) NOT NULL,
   `deskripsi` text NOT NULL,
-  `gambar` varchar(50) NOT NULL
+  `gambar` varchar(50) NOT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -118,7 +120,8 @@ CREATE TABLE `pengaduan` (
   `email` varchar(30) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL,
-  `bukti` varchar(50) NOT NULL
+  `bukti` varchar(50) NOT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -131,16 +134,18 @@ CREATE TABLE `pengumuman` (
   `id_pengumuman` int(11) NOT NULL,
   `id_login` int(11) NOT NULL,
   `judul_pengumuman` varchar(50) NOT NULL,
-  `pdf_pengumuman` varchar(100) NOT NULL,
-  `date_pengumuman` date NOT NULL
+  `gambar` varchar(100) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `tanggal` date NOT NULL,
+  `konfirmasi` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengumuman`
 --
 
-INSERT INTO `pengumuman` (`id_pengumuman`, `id_login`, `judul_pengumuman`, `pdf_pengumuman`, `date_pengumuman`) VALUES
-(1, 5, 'ada', 'Farid.pdf', '2017-11-30');
+INSERT INTO `pengumuman` (`id_pengumuman`, `id_login`, `judul_pengumuman`, `gambar`, `deskripsi`, `tanggal`, `konfirmasi`) VALUES
+(3, 5, 'Coba', 'clientserverdiagm.png', '<p>saya</p>', '2019-03-27', 0);
 
 -- --------------------------------------------------------
 
@@ -153,7 +158,8 @@ CREATE TABLE `profil` (
   `id_login` int(11) NOT NULL,
   `judul` varchar(50) NOT NULL,
   `gambar` varchar(50) NOT NULL,
-  `deskripsi` text NOT NULL
+  `deskripsi` text NOT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -166,7 +172,8 @@ CREATE TABLE `publikasi` (
   `id_publikasi` int(11) NOT NULL,
   `id_login` int(11) NOT NULL,
   `deskripsi` text NOT NULL,
-  `gambar` varchar(50) NOT NULL
+  `gambar` varchar(50) NOT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -178,7 +185,9 @@ CREATE TABLE `publikasi` (
 CREATE TABLE `sambutan` (
   `id_sambutan` int(11) NOT NULL,
   `id_login` int(11) NOT NULL,
-  `deskripsi` text NOT NULL
+  `deskripsi` text NOT NULL,
+  `tanggal` date NOT NULL,
+  `gambar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -191,7 +200,8 @@ CREATE TABLE `sturuktur` (
   `id_so` int(11) NOT NULL,
   `id_login` int(11) NOT NULL,
   `gambar` varchar(50) NOT NULL,
-  `deskripsi` text NOT NULL
+  `deskripsi` text NOT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -204,7 +214,8 @@ CREATE TABLE `syarat` (
   `id_syarat` int(11) NOT NULL,
   `id_login` int(11) NOT NULL,
   `deskripsi` text NOT NULL,
-  `gambar` varchar(50) NOT NULL
+  `gambar` varchar(50) NOT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -216,7 +227,8 @@ CREATE TABLE `syarat` (
 CREATE TABLE `visimisi` (
   `id_visimisi` int(11) NOT NULL,
   `id_login` int(11) NOT NULL,
-  `deskripsi` text NOT NULL
+  `deskripsi` text NOT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -345,7 +357,7 @@ ALTER TABLE `pengaduan`
 -- AUTO_INCREMENT for table `pengumuman`
 --
 ALTER TABLE `pengumuman`
-  MODIFY `id_pengumuman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pengumuman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `profil`

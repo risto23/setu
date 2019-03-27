@@ -1,74 +1,83 @@
 <?php
+
 include "fungsi/config.php";
 
 if(isset($_POST['inputpengumuman']))
 {
+	$img_pengumuman = $_FILES['img_pengumuman']['name'];
+	$judul_pengumuman = $_POST['judul_pengumuman'];
 	$date_pengumuman = $_POST['date_pengumuman'];
 	$id_login = $_POST['id_login'];
-	$judul_pengumuman = $_POST['judul_pengumuman'];
-	$pdf_pengumuman = $_FILES['pdf_pengumuman']['name'];
+	$pengumuman =  $_POST['pengumuman'];
 
+	$data = mysqli_query($koneksi,"insert into pengumuman (gambar,judul_pengumuman,tanggal,id_login,deskripsi) values ('$img_pengumuman','$judul_pengumuman','$date_pengumuman','$id_login','$pengumuman')");
 
-	$data = mysqli_query($koneksi,"insert into Pengumuman (date_pengumuman,id_login,judul_pengumuman,pdf_pengumuman) values ('$date_pengumuman','$id_login','$judul_pengumuman','$pdf_pengumuman')");
-	if($data)
+	if ($data)
 	{
-		move_uploaded_file($_FILES['pdf_pengumuman']['tmp_name'], "news/pdf/".$_FILES['pdf_pengumuman']['name']);
-		echo"<script> alert('Data Berhasil Diinput') ; window.location.href='pengumuman.php'; </script>";
+		move_uploaded_file($_FILES['img_pengumuman']['tmp_name'], "pengumuman/".$_FILES['img_pengumuman']['name']);
+		echo"<script> alert('Pengumuman Berhasil Diinput') ; window.location.href='pengumuman.php'; </script>";
 	}
 	else {
-		echo"<script> alert('Data Gagal Diinput, Silahkan ulangi lagi') ; window.location.href='pengumuman.php'; </script>";
+		echo"<script> alert('Pengumuman Gagal Diinput, Silahkan ulangi lagi') ; window.location.href='pengumuman.php'; </script>";
 	}
 }
-else if (isset($_POST['editpengumuman']))
+else if(isset($_POST['editpengumuman']))
 {
+	$img_pengumuman = $_FILES['img_pengumuman']['name'];
+	$img_pengumuman_old = $_POST['img_pengumuman_old'];
+	$judul_pengumuman = $_POST['judul_pengumuman'];
 	$date_pengumuman = $_POST['date_pengumuman'];
 	$id_login = $_POST['id_login'];
-	$judul_pengumuman = $_POST['judul_pengumuman'];
-	$pdf_pengumuman = $_FILES['pdf_pengumuman']['name'];
+	$pengumuman =  $_POST['pengumuman'];
 	$id_pengumuman = $_POST['id_pengumuman'];
-	$pdf_pengumuman_old = $_POST['pdf_pengumuman_old'];
 
-	if(!empty($pdf_pengumuman))
+	if(!empty($img_pengumuman))
 	{
-		$data = mysqli_query($koneksi,"update Pengumuman set date_pengumuman='$date_pengumuman', id_login='$id_login',judul_pengumuman='$judul_pengumuman',pdf_pengumuman='$pdf_pengumuman' where id_pengumuman ='$id_pengumuman'");
+		$data = mysqli_query($koneksi,"UPDATE pengumuman SET id_login='$id_login',judul_pengumuman='$judul_pengumuman',gambar='$img_pengumuman',deskripsi='$pengumuman',tanggal='$date_pengumuman', WHERE id_pengumuman='$id_pengumuman'");
 		if ($data)
 		{
-			unlink("news/pdf/$pdf_pengumuman_old");
-			move_uploaded_file($_FILES['pdf_pengumuman']['tmp_name'], "news/pdf/".$_FILES['pdf_pengumuman']['name']);
-			echo"<script> alert('Data Berhasil Diinput') ; window.location.href='pengumuman.php'; </script>";
+			unlink("pengumuman/$img_pengumuman_old");
+			move_uploaded_file($_FILES['img_pengumuman']['tmp_name'], "pengumuman/".$_FILES['img_pengumuman']['name']);
+			echo"<script> alert('Pengumuman Berhasil Diinput') ; window.location.href='pengumuman.php'; </script>";
 		}
 		else {
-			echo"<script> alert('Data Gagal Diinput, Silahkan ulangi lagi') ; window.location.href='pengumuman.php'; </script>";
+			echo"<script> alert('Pengumuman Gagal Diinput, Silahkan ulangi lagi') ; window.location.href='pengumuman.php'; </script>";
 		}	
 	}
 	else {
-		$data = mysqli_query($koneksi,"update Pengumuman set date_pengumuman='$date_pengumuman', id_login='$id_login',judul_pengumuman='$judul_pengumuman' where id_pengumuman ='$id_pengumuman'");
+		$data = mysqli_query($koneksi,"update pengumuman set judul_pengumuman ='$judul_pengumuman', tanggal='$date_pengumuman', id_login='$id_login', deskripsi ='$pengumuman' where id_pengumuman ='$id_pengumuman'");
 		if ($data)
 		{
-			echo"<script> alert('Data Berhasil Diinput') ; window.location.href='pengumuman.php' </script>";
+			echo"<script> alert('Pengumuman Berhasil Diinput') ; window.location.href='pengumuman.php'; </script>";
 		}
 		else {
-			echo"<script> alert('Data Gagal Diinput, Silahkan ulangi lagi') ; window.location.href='pengumuman.php'; </script>";
+			echo"<script> alert('Pengumuman Gagal Diinput, Silahkan ulangi lagi1') ; window.location.href='pengumuman.php'; </script>";
 		}
 	}
+	
 }
-else if (isset($_GET['id']))
+else if (isset($_GET['id_hapus']))
 {
-	$id = $_GET['id'];
-	$data = mysqli_query($koneksi,"select * from Pengumuman where id_pengumuman ='$id'");
-	while ($datapdf = mysqli_fetch_array($data)) {
-		$pdf = $datapdf['pdf_pengumuman'];
-	}
-	$hapusdata= mysqli_query($koneksi,"delete from Pengumuman where id_pengumuman = '$id'");
-
-	if($hapusdata)
+	$id = $_GET['id_hapus'];
+	$data = mysqli_query($koneksi,"select * from pengumuman where id_pengumuman = '$id'");
+	while ($hasil = mysqli_fetch_array($data))
 	{
-		unlink("news/pdf/$pdf");
-		echo"<script> alert('Data Berhasil Dihapus') ; window.location.href='pengumuman.php'; </script>";
+		$foto = $hasil['img_pengumuman'];
 	}
-	else
+	if($foto)
 	{
-		echo"<script> alert('Data Gagal Dihapus, Silahkan ulangi lagi') ; window.location.href='pengumuman.php'; </script>";
+		$proses = mysqli_query($koneksi,"delete from pengumuman where id_pengumuman = '$id'");
+		if($proses)
+		{
+			unlink("pengumuman/$foto");
+			echo"<script> alert('Pengumuman Berhasil Dihapus') ; window.location.href='pengumuman.php'; </script>";
+		}
+		else {
+			echo"<script> alert('Pengumuman Gagal Dihapus, Silahkan Ulangi') ; window.location.href='pengumuman.php'; </script>";
+		}
+	}
+	else {
+		echo"<script> alert('Pengumuman Gagal Dihapus, Silahkan Ulangi') ; window.location.href='pengumuman.php'; </script>";
 	}
 }
-?>
+
