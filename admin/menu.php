@@ -37,11 +37,6 @@
             <i class="fa fa-home fa-home"></i> <span>Home</span>
           </a>
         </li>
-        <li>
-          <a href="data_mahasiswa.php">
-            <i class="fa fa-table fa-fw"></i> <span>Tabel</span>
-          </a>
-        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit fa-fw"></i> <span>Form</span>
@@ -52,7 +47,27 @@
           <ul class="treeview-menu">
             <li><a href="form_edit_berita.php"><i class="fa fa-circle-o"></i>Berita</a></li>
             <li><a href="pengumuman.php"><i class="fa fa-circle-o"></i>Pengumuman</a></li>
+            <li><a href="publikasi.php"><i class="fa fa-circle-o"></i>Publikasi</a></li>
+            <li><a href="syarat.php"><i class="fa fa-circle-o"></i>Syarat</a></li>
+            <li><a href="pengaduan.php"><i class="fa fa-circle-o"></i>Pengaduan</a></li>
+            <li><a href="pelayanan.php"><i class="fa fa-circle-o"></i>Pelayanan</a></li>
           </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit fa-fw"></i> <span>Profil</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="profil.php"><i class="fa fa-circle-o"></i>Profil</a></li>
+            <li><a href="sambutan.php"><i class="fa fa-circle-o"></i>Sambutan</a></li>
+            <li><a href="struktur.php"><i class="fa fa-circle-o"></i>Struktur</a></li>
+            <li><a href="visimisi.php"><i class="fa fa-circle-o"></i>Visi & Misi</a></li>
+            <li><a href="kontak.php"><i class="fa fa-circle-o"></i>Kontak</a></li>
+          </ul>
+        </li>
         <li>
           <a href="user.php">
             <i class="fa fa-users"></i> <span>User</span>
