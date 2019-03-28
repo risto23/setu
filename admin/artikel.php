@@ -135,7 +135,7 @@ session_start();
                       </div>
                       <?php 
                       } ?>
-                      <textarea class="textarea" name="artikel" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"><?php echo $dataartikel['isi_artikel'];?></textarea>
+                      <textarea class="textarea" name="artikel" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"><?php echo $dataartikel['deskripsi'];?></textarea>
                       <a href="artikel.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
                       <button type="submit" name="editartikel" class="btn btn-info " style="float: right;">Simpan</button>
                     </form>
@@ -228,7 +228,7 @@ session_start();
                         <td><?php echo fungsi_tgl($dataartikel['tanggal']); ?></td>
                         <td><img src="artikel/<?php echo $dataartikel['gambar']; ?>" width="100px"></td>
                         <td><?php echo $dataartikel['judul_artikel']; ?></td>
-                        <td><?php echo $dataartikel['isi_artikel'];?></td>
+                        <td><?php echo $dataartikel['deskripsi'];?></td>
                         <?php 
 
                         $status=$dataartikel['konfirmasi'];
@@ -249,7 +249,7 @@ session_start();
                             </button>
                             <ul class="dropdown-menu">
                               <li>
-                                <a href="form_edit_berita.php?id=<?php echo $dataartikel['id_artikel']; ?>">Edit</a>
+                                <a href="artikel.php?id=<?php echo $dataartikel['id_artikel']; ?>">Edit</a>
                               </li>
                               <?php 
                                  $login=$_SESSION['user'];
@@ -257,7 +257,7 @@ session_start();
                                  {
                                   ?>
                                   <li>
-                                <a href="form_edit_berita.php?id=<?php echo $dataartikel['id_artikel']; ?>">Konfirmasi</a>
+                                <a href="artikel.php?id=<?php echo $dataartikel['id_artikel']; ?>">Konfirmasi</a>
                                 </li>
                                 <?php
                                  }

@@ -45,7 +45,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="form_edit_berita.php"><i class="fa fa-circle-o"></i>Berita</a></li>
+            <li><a href="artikel.php"><i class="fa fa-circle-o"></i>Berita</a></li>
             <li><a href="pengumuman.php"><i class="fa fa-circle-o"></i>Pengumuman</a></li>
             <li><a href="publikasi.php"><i class="fa fa-circle-o"></i>Publikasi</a></li>
             <li><a href="syarat.php"><i class="fa fa-circle-o"></i>Syarat</a></li>
