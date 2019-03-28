@@ -67,44 +67,45 @@ session_start();
           <!-- Input addon -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">News</h3>
+              <h3 class="box-title">Artikel</h3>
             </div>
             <div class="box-body">
               <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#input">Input</a></li>
-                <li><a data-toggle="tab" href="#news">News</a></li>
+                <li><a data-toggle="tab" href="#artikel">Artikel</a></li>
               </ul>
               <div class="tab-content">
                 <div id="input" class="tab-pane fade in active">
                   <?php
                   if(isset($_GET['id']))
                   {
-                    $id_news = $_GET['id'];
-                    $datalist = mysqli_query($koneksi,"select * from Artikel where id = '$id_news' ");
-                    while($datanews = mysqli_fetch_array($datalist))
+                    $id_artikel = $_GET['id'];
+                    $datalist = mysqli_query($koneksi,"select * from Artikel where id_artikel = '$id_artikel' ");
+                    while($dataartikel = mysqli_fetch_array($datalist))
                     {
                   ?>
-                    <form action="proses_news.php" method="post" enctype="multipart/form-data">
+                    <form action="proses_artikel.php" method="post" enctype="multipart/form-data">
                       <div class="input-group">
                         <span class="input-group-addon">
                           <i class="fa fa-camera" title="Foto Berita"> </i>
                         </span>
-                        <input name="img_news" type="file" class="form-control" placeholder="Foto Artikel" accept="image/x-png,image/gif,image/jpeg">
+                        <input name="img_artikel" type="file" class="form-control" placeholder="Foto Artikel" accept="image/x-png,image/gif,image/jpeg">
                         <input type="text" class="form-control" value="Jika tidak ingin mengganti foto, biarkan form kosong" readonly="">
-                        <input name="img_news_old" type="hidden" class="form-control" placeholder="Foto Artikel" value="<?php echo $datanews['gambar'];?>">
-                        <input type="hidden" name="id_news" value="<?php echo $datanews['id'];?>">
+                        <input name="img_artikel_old" type="hidden" class="form-control" placeholder="Foto Artikel" value="<?php echo $dataartikel['gambar'];?>">
+                        <input type="hidden" name="id_artikel" value="<?php echo $dataartikel['id_artikel'];?>">
+                        <input type="hidden" name="id_login" value="<?php echo $_SESSION['user']; ?>">
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">
                           <i class="fa fa-book" title="Judul Berita"> </i>
                         </span>
-                        <input name="judul_news" type="text" class="form-control" placeholder="Judul News" value="<?php echo $datanews['judul_artikel'];?>">
+                        <input name="judul_artikel" type="text" class="form-control" placeholder="Judul artikel" value="<?php echo $dataartikel['judul_artikel'];?>">
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar" title="Tanggal Berita"> </i>
                         </span>
-                        <input name="date_news" type="date" class="form-control" placeholder="Tanggal Artikel" value="<?php echo date('Y-m-d');?>" readonly>
+                        <input name="date_artikel" type="date" class="form-control" placeholder="Tanggal Artikel" value="<?php echo date('Y-m-d');?>" readonly>
                       </div>
                      <div class="input-group">
                         <span class="input-group-addon">
@@ -134,9 +135,9 @@ session_start();
                       </div>
                       <?php 
                       } ?>
-                      <textarea class="textarea" name="news" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"><?php echo $datanews['isi_artikel'];?></textarea>
-                      <a href="news.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
-                      <button type="submit" name="editnews" class="btn btn-info " style="float: right;">Simpan</button>
+                      <textarea class="textarea" name="artikel" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"><?php echo $dataartikel['isi_artikel'];?></textarea>
+                      <a href="artikel.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
+                      <button type="submit" name="editartikel" class="btn btn-info " style="float: right;">Simpan</button>
                     </form>
                   <?php
                     }
@@ -144,24 +145,25 @@ session_start();
                   else
                   {
                   ?>
-                    <form action="proses_news.php" method="post" enctype="multipart/form-data">
+                    <form action="proses_artikel.php" method="post" enctype="multipart/form-data">
                       <div class="input-group">
                         <span class="input-group-addon">
                           <i class="fa fa-camera" title="Foto Berita"> </i>
                         </span>
-                        <input name="img_news" type="file" class="form-control" placeholder="Foto Artikel" accept="image/x-png,image/gif,image/jpeg">
+                        <input name="img_artikel" type="file" class="form-control" placeholder="Foto Artikel" accept="image/x-png,image/gif,image/jpeg">
+                        <input type="hidden" name="id_login" value="<?php echo $_SESSION['user']; ?>">
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">
                           <i class="fa fa-book" title="Judul Berita"> </i>
                         </span>
-                        <input name="judul_news" type="text" class="form-control" placeholder="Judul Artikel" value="">
+                        <input name="judul_artikel" type="text" class="form-control" placeholder="Judul Artikel" value="">
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar" title="Tanggal Berita"> </i>
                         </span>
-                        <input name="date_news" type="date" class="form-control" placeholder="Tanggal Artikel" value="<?php echo date('Y-m-d');?>" readonly>
+                        <input name="date_artikel" type="date" class="form-control" placeholder="Tanggal Artikel" value="<?php echo date('Y-m-d');?>" readonly>
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">
@@ -193,16 +195,16 @@ session_start();
                       </div>
                       <?php 
                       } ?>
-                      <textarea class="textarea" name="news" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"></textarea>
-                      <a href="news.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
-                      <button type="submit" name="inputnews" class="btn btn-info " style="float: right;">Simpan</button>
+                      <textarea class="textarea" name="artikel" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"></textarea>
+                      <a href="artikel.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
+                      <button type="submit" name="inputartikel" class="btn btn-info " style="float: right;">Simpan</button>
                     </form>
                   <?php
                   }
                   ?>
                 </div>
-                <div id="news" class="tab-pane fade">
-                  <table id="table_news" class="table table-bordered table-striped" width="100%">
+                <div id="artikel" class="tab-pane fade">
+                  <table id="table_artikel" class="table table-bordered table-striped" width="100%">
                     <thead>
                     <tr>
                       <th>No</th>
@@ -217,19 +219,19 @@ session_start();
                     <tbody>
                     <?php
                     $no = 1;
-                    $data = mysqli_query($koneksi,"select * from Artikel");
-                    while($datanews = mysqli_fetch_array($data))
+                    $data = mysqli_query($koneksi,"select * from artikel");
+                    while($dataartikel = mysqli_fetch_array($data))
                     {
                     ?>
                       <tr>
                         <td><?php echo $no; ?></td>
-                        <td><?php echo fungsi_tgl($datanews['tanggal']); ?></td>
-                        <td><img src="news/<?php echo $datanews['gambar']; ?>" width="100px"></td>
-                        <td><?php echo $datanews['judul_artikel']; ?></td>
-                        <td><?php echo $datanews['isi_artikel'];?></td>
+                        <td><?php echo fungsi_tgl($dataartikel['tanggal']); ?></td>
+                        <td><img src="artikel/<?php echo $dataartikel['gambar']; ?>" width="100px"></td>
+                        <td><?php echo $dataartikel['judul_artikel']; ?></td>
+                        <td><?php echo $dataartikel['isi_artikel'];?></td>
                         <?php 
 
-                        $status=$datanews['konfirmasi'];
+                        $status=$dataartikel['konfirmasi'];
                         if($status==1)
                         {
                           $konfirmasi="OK";
@@ -247,7 +249,7 @@ session_start();
                             </button>
                             <ul class="dropdown-menu">
                               <li>
-                                <a href="form_edit_berita.php?id=<?php echo $datanews['id']; ?>">Edit</a>
+                                <a href="form_edit_berita.php?id=<?php echo $dataartikel['id_artikel']; ?>">Edit</a>
                               </li>
                               <?php 
                                  $login=$_SESSION['user'];
@@ -255,13 +257,13 @@ session_start();
                                  {
                                   ?>
                                   <li>
-                                <a href="form_edit_berita.php?id=<?php echo $datanews['id']; ?>">Konfirmasi</a>
+                                <a href="form_edit_berita.php?id=<?php echo $dataartikel['id_artikel']; ?>">Konfirmasi</a>
                                 </li>
                                 <?php
                                  }
                                ?>
                               <li>
-                                <a href="hapus.php?id_hapus=<?php echo $datanews['id']; ?>">Hapus</a>
+                                <a href="hapus.php?id_hapus=<?php echo $dataartikel['id_artikel']; ?>">Hapus</a>
                               </li>
 
                             </ul>

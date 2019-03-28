@@ -33,7 +33,7 @@ include "menu.php";
       <div class="container">
       <?php 
  $id_artikel=$_GET['id'];
- $sql=mysqli_query($koneksi,"select * from Artikel where id='$id_artikel'");
+ $sql=mysqli_query($koneksi,"select * from Artikel where id_artikel='$id_artikel'");
  while($row=mysqli_fetch_array($sql))
  {
   $judul=$row['judul_artikel'];

@@ -77,7 +77,7 @@ include "menu.php";
                 ?>
               <div class="col-md-3 mobile">
                   <div class="isi text-center">
-                      <a href="artikel_detail.php?id=<?php echo $baris['id']; ?>" ><img src="admin/news/<?php echo $gambar ;?>" width="100px" class="img-responsive"> <h4><?php echo $judul;?></h4></a>
+                      <a href="artikel_detail.php?id=<?php echo $baris['id_artikel']; ?>" ><img src="admin/artikel/<?php echo $gambar ;?>" width="100px" class="img-responsive"> <h4><?php echo $judul;?></h4></a>
                       <div>
                      <?php
                      echo substr($isi, 0,100);

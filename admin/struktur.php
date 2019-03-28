@@ -67,51 +67,54 @@ session_start();
           <!-- Input addon -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">News</h3>
+              <h3 class="box-title">Struktur</h3>
             </div>
             <div class="box-body">
               <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#input">Input</a></li>
-                <li><a data-toggle="tab" href="#news">News</a></li>
+                <li><a data-toggle="tab" href="#struktur">Struktur</a></li>
               </ul>
               <div class="tab-content">
                 <div id="input" class="tab-pane fade in active">
+
                   <?php
                   if(isset($_GET['id']))
                   {
-                    $id_news = $_GET['id'];
-                    $datalist = mysqli_query($koneksi,"select * from Artikel where id = '$id_news' ");
-                    while($datanews = mysqli_fetch_array($datalist))
-                    {
+                    $id_struktur = $_GET['id'];
+                    $datalist = mysqli_query($koneksi,"select * from struktur where id_struktur='$id_struktur' ");
+                    while($datastruktur = mysqli_fetch_array($datalist))
+                    { 
+                      
                   ?>
-                    <form action="proses_news.php" method="post" enctype="multipart/form-data">
+                    <form action="proses_struktur.php" method="post" enctype="multipart/form-data">
                       <div class="input-group">
                         <span class="input-group-addon">
-                          <i class="fa fa-camera" title="Foto Berita"> </i>
+                          <i class="fa fa-camera" title="Foto"> </i>
                         </span>
-                        <input name="img_news" type="file" class="form-control" placeholder="Foto Artikel" accept="image/x-png,image/gif,image/jpeg">
+                        <input name="img_struktur" type="file" class="form-control" placeholder="Foto" accept="image/x-png,image/gif,image/jpeg">
                         <input type="text" class="form-control" value="Jika tidak ingin mengganti foto, biarkan form kosong" readonly="">
-                        <input name="img_news_old" type="hidden" class="form-control" placeholder="Foto Artikel" value="<?php echo $datanews['gambar'];?>">
-                        <input type="hidden" name="id_news" value="<?php echo $datanews['id'];?>">
+                        <input name="img_struktur_old" type="hidden" class="form-control" placeholder="Foto" value="<?php echo $datastruktur['gambar'];?>">
+                        <input type="hidden" name="id_struktur" value="<?php echo $datastruktur['id_struktur'];?>">
+                        <input type="hidden" name="id_login" value="<?php echo $_SESSION['user']; ?>">
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">
                           <i class="fa fa-book" title="Judul Berita"> </i>
                         </span>
-                        <input name="judul_news" type="text" class="form-control" placeholder="Judul News" value="<?php echo $datanews['judul_artikel'];?>">
+                        <input name="judul_struktur" type="text" class="form-control" placeholder="Judul struktur" value="<?php echo $datastruktur['judul_struktur'];?>">
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">
-                          <i class="fa fa-calendar" title="Tanggal Berita"> </i>
+                          <i class="fa fa-calendar" title="Tanggal struktur"> </i>
                         </span>
-                        <input name="date_news" type="date" class="form-control" placeholder="Tanggal Artikel" value="<?php echo date('Y-m-d');?>" readonly>
+                        <input name="date_struktur" type="date" class="form-control" placeholder="Tanggal struktur" value="<?php echo date('Y-m-d');?>" readonly>
                       </div>
                      <div class="input-group">
                         <span class="input-group-addon">
-                          <i class="fa fa-user" title="Penulis Berita"> </i>
+                          <i class="fa fa-user" title="Penulis"> </i>
                         </span>
                           <?php
-                          $dataprofil = mysqli_query($koneksi,"select * from login INNER JOIN Artikel ON Artikel.id_login=login.id_login");
+                          $dataprofil = mysqli_query($koneksi,"select * from login INNER JOIN struktur ON struktur.id_login=login.id_login");
                           while ($data=mysqli_fetch_array($dataprofil)) {
                             $nama=$data['nama'];
                            }
@@ -119,24 +122,11 @@ session_start();
                            <input type="text" name="izin" value="<?php echo $nama; ?>" class="form-control" readonly>         
                       </div>
                       <?php 
-                      $login=$_SESSION['user'];
-                                 if($login==6)
-                                 {
+                      include "konfirmasi.php";
                        ?>
-                        <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-book" title="Penulis"> </i>
-                        </span>
-                        <select name="konfirmasi" class="form-control">
-                            <option value="konfirmasi">Konfirmasi</option>
-                            <option value="konfirmasi">Pending</option>
-                          </select>
-                      </div>
-                      <?php 
-                      } ?>
-                      <textarea class="textarea" name="news" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"><?php echo $datanews['isi_artikel'];?></textarea>
-                      <a href="news.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
-                      <button type="submit" name="editnews" class="btn btn-info " style="float: right;">Simpan</button>
+                      <textarea class="textarea" name="struktur" placeholder="Silahkan tulis disini" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"><?php echo $datastruktur['deskripsi'];?></textarea>
+                      <a href="struktur.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
+                      <button type="submit" name="editstruktur" class="btn btn-info " style="float: right;">Simpan</button>
                     </form>
                   <?php
                     }
@@ -144,24 +134,25 @@ session_start();
                   else
                   {
                   ?>
-                    <form action="proses_news.php" method="post" enctype="multipart/form-data">
+                    <form action="proses_struktur.php" method="post" enctype="multipart/form-data">
                       <div class="input-group">
                         <span class="input-group-addon">
-                          <i class="fa fa-camera" title="Foto Berita"> </i>
+                          <i class="fa fa-camera" title="Foto struktur"> </i>
                         </span>
-                        <input name="img_news" type="file" class="form-control" placeholder="Foto Artikel" accept="image/x-png,image/gif,image/jpeg">
+                        <input name="img_struktur" type="file" class="form-control" placeholder="Foto" accept="image/x-png,image/gif,image/jpeg">
+                        <input type="hidden" name="id_login" value="<?php echo $_SESSION['user']; ?>">
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">
-                          <i class="fa fa-book" title="Judul Berita"> </i>
+                          <i class="fa fa-book" title="Judul struktur"> </i>
                         </span>
-                        <input name="judul_news" type="text" class="form-control" placeholder="Judul Artikel" value="">
+                        <input name="judul_struktur" type="text" class="form-control" placeholder="Judul" value="">
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">
-                          <i class="fa fa-calendar" title="Tanggal Berita"> </i>
+                          <i class="fa fa-calendar" title="Tanggal struktur"> </i>
                         </span>
-                        <input name="date_news" type="date" class="form-control" placeholder="Tanggal Artikel" value="<?php echo date('Y-m-d');?>" readonly>
+                        <input name="date_struktur" type="date" class="form-control" placeholder="Tanggal struktur" value="<?php echo date('Y-m-d');?>" readonly>
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">
@@ -172,44 +163,31 @@ session_start();
                               $nama=$hasil['nama'];
                             }
                            ?>
-                          <i class="fa fa-user" title="Penulis Berita"> </i>
+                          <i class="fa fa-user" title="Penulis"> </i>
                         </span>
                          <input type="text" name="izin" value="<?php echo $nama; ?>" class="form-control" readonly>
                       </div>
                      
-                        <?php 
-                      $login=$_SESSION['user'];
-                                 if($login==6)
-                                 {
-                       ?>
-                        <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-book" title="Penulis"> </i>
-                        </span>
-                        <select name="konfirmasi" class="form-control">
-                            <option value="konfirmasi">Konfirmasi</option>
-                            <option value="konfirmasi">Pending</option>
-                          </select>
-                      </div>
-                      <?php 
-                      } ?>
-                      <textarea class="textarea" name="news" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"></textarea>
-                      <a href="news.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
-                      <button type="submit" name="inputnews" class="btn btn-info " style="float: right;">Simpan</button>
+                       <?php 
+                       include "konfirmasi.php";
+                        ?>
+                      <textarea class="textarea" name="struktur" placeholder="Silahkan tulis disini" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"></textarea>
+                      <a href="struktur.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
+                      <button type="submit" name="inputstruktur" class="btn btn-info " style="float: right;">Simpan</button>
                     </form>
                   <?php
                   }
                   ?>
                 </div>
-                <div id="news" class="tab-pane fade">
-                  <table id="table_news" class="table table-bordered table-striped" width="100%">
+                <div id="struktur" class="tab-pane fade">
+                  <table id="table_struktur" class="table table-bordered table-striped" width="100%">
                     <thead>
                     <tr>
                       <th>No</th>
-                      <th>Tanggal Artikel</th>
+                      <th>Tanggal struktur</th>
                       <th>Gambar</th>
-                      <th>Judul Artikel</th>
-                      <th>Isi Artikel</th>
+                      <th>Judul struktur</th>
+                      <th>Isi struktur</th>
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
@@ -217,19 +195,19 @@ session_start();
                     <tbody>
                     <?php
                     $no = 1;
-                    $data = mysqli_query($koneksi,"select * from publikasi");
-                    while($datanews = mysqli_fetch_array($data))
+                    $data = mysqli_query($koneksi,"select * from struktur");
+                    while($datastruktur = mysqli_fetch_array($data))
                     {
                     ?>
                       <tr>
                         <td><?php echo $no; ?></td>
-                        <td><?php echo fungsi_tgl($datanews['tanggal']); ?></td>
-                        <td><img src="news/<?php echo $datanews['gambar']; ?>" width="100px"></td>
-                        <td><?php echo $datanews['judul_artikel']; ?></td>
-                        <td><?php echo $datanews['isi_artikel'];?></td>
+                        <td><?php echo fungsi_tgl($datastruktur['tanggal']); ?></td>
+                        <td><img src="struktur/<?php echo $datastruktur['gambar']; ?>" width="100px"></td>
+                        <td><?php echo $datastruktur['judul_struktur']; ?></td>
+                        <td><?php echo $datastruktur['deskripsi'];?></td>
                         <?php 
 
-                        $status=$datanews['konfirmasi'];
+                        $status=$datastruktur['konfirmasi'];
                         if($status==1)
                         {
                           $konfirmasi="OK";
@@ -247,7 +225,7 @@ session_start();
                             </button>
                             <ul class="dropdown-menu">
                               <li>
-                                <a href="form_edit_berita.php?id=<?php echo $datanews['id']; ?>">Edit</a>
+                                <a href="struktur.php?id=<?php echo $datastruktur['id_struktur']; ?>">Edit</a>
                               </li>
                               <?php 
                                  $login=$_SESSION['user'];
@@ -255,13 +233,13 @@ session_start();
                                  {
                                   ?>
                                   <li>
-                                <a href="form_edit_berita.php?id=<?php echo $datanews['id']; ?>">Konfirmasi</a>
+                                <a href="struktur.php?id=<?php echo $datastruktur['id_struktur']; ?>">Konfirmasi</a>
                                 </li>
                                 <?php
                                  }
                                ?>
                               <li>
-                                <a href="hapus.php?id_hapus=<?php echo $datanews['id']; ?>">Hapus</a>
+                                <a href="hapus.php?id_hapus=<?php echo $datastruktur['id_struktur']; ?>">Hapus</a>
                               </li>
 
                             </ul>
