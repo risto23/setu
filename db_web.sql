@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2019 at 05:35 AM
+-- Generation Time: Mar 28, 2019 at 08:36 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `artikel` (
 `id_artikel` int(11) NOT NULL,
   `judul_artikel` varchar(50) NOT NULL,
-  `isi_artikel` text NOT NULL,
+  `deskripsi` text NOT NULL,
   `gambar` varchar(100) NOT NULL,
   `tanggal` date NOT NULL,
   `id_login` int(11) NOT NULL,
@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS `artikel` (
 -- Dumping data for table `artikel`
 --
 
-INSERT INTO `artikel` (`id_artikel`, `judul_artikel`, `isi_artikel`, `gambar`, `tanggal`, `id_login`, `konfirmasi`) VALUES
-(4, 'a', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Digital NexIcorn.jpeg', '0000-00-00', 5, 1),
+INSERT INTO `artikel` (`id_artikel`, `judul_artikel`, `deskripsi`, `gambar`, `tanggal`, `id_login`, `konfirmasi`) VALUES
+(4, 'a33', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Digital NexIcorn.jpeg', '2019-03-28', 5, 1),
 (5, 'ada', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Pemerintah Bangun Jembatan Gantung.jpeg', '2017-11-29', 5, 1);
 
 -- --------------------------------------------------------
@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `pengumuman` (
 --
 
 INSERT INTO `pengumuman` (`id_pengumuman`, `id_login`, `judul_pengumuman`, `gambar`, `deskripsi`, `tanggal`, `konfirmasi`) VALUES
-(3, 5, 'Coba', 'clientserverdiagm.png', '<p>saya</p>', '2019-03-27', 0);
+(3, 5, 'Cobaa', 'clientserverdiagm.png', '<p>saya</p>', '2019-03-28', 0);
 
 -- --------------------------------------------------------
 
