@@ -73,7 +73,7 @@ include "menu.php";
               while ($baris=mysqli_fetch_array($kueri)) {
                 $gambar=$baris['gambar'];
                 $judul=$baris['judul_artikel'];
-                $isi=$baris['isi_artikel'];
+                $isi=$baris['deskripsi'];
                 ?>
               <div class="col-md-3 mobile">
                   <div class="isi text-center">
