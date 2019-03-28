@@ -11,7 +11,7 @@
             <a class="nav-link" href="index.php">Beranda</a>
             </li>
             <li class="nav-item ">
-            <a class="nav-link" href="index.php">Sambutan</a>
+            <a class="nav-link" href="sambutan.php">Sambutan</a>
             </li>
 
             <li class="nav-item dropdown">
@@ -19,33 +19,33 @@
             Profil
             </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="Sejarah.php">Profil Kelurahan</a>
-           <a class="dropdown-item" href="visi&misi.php">Visi & Misi</a>
-          <a class="dropdown-item" href="YPTI.php">Struktur Organisasi</a>
-           <a class="dropdown-item" href="visi&misi.php">Kontak</a>
+          <a class="dropdown-item" href="profil.php">Profil Kelurahan</a>
+           <a class="dropdown-item" href="visimisi.php">Visi & Misi</a>
+          <a class="dropdown-item" href="struktur.php">Struktur Organisasi</a>
+           <a class="dropdown-item" href="kontak.php">Kontak</a>
           
         </div>
             </li>
             <li class="nav-item ">
-            <a class="nav-link" href="index.php">Pelayanan</a>
+            <a class="nav-link" href="pelayanan.php">Pelayanan</a>
             </li>
             <li class="nav-item ">
-            <a class="nav-link" href="index.php">Pengaduan</a>
+            <a class="nav-link" href="pengaduan.php">Pengaduan</a>
             </li>
             <li class="nav-item ">
-            <a class="nav-link" href="index.php">Berita</a>
+            <a class="nav-link" href="berita.php">Berita</a>
             </li>
             <li class="nav-item ">
-            <a class="nav-link" href="index.php">Publikasi</a>
+            <a class="nav-link" href="publikasi.php">Publikasi</a>
             </li>
             <li class="nav-item ">
-            <a class="nav-link" href="index.php">Pengumuman</a>
+            <a class="nav-link" href="pengumuman.php">Pengumuman</a>
             </li>
             <li class="nav-item ">
-            <a class="nav-link" href="index.php">Syarat Pengurusan</a>
+            <a class="nav-link" href="syarat.php">Syarat Pengurusan</a>
             </li>
              <li class="nav-item">
-            <a class="nav-link" href="user/index.php">Login</a>
+            <a class="nav-link" href="admin/index.php">Login</a>
             </li>
         </ul>
      </div>

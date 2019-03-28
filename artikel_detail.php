@@ -29,46 +29,45 @@ include ('admin/fungsi/config.php');
 include "menu.php";
  ?>
  
-<section class="isi-softskill">
+<section class="isi-TIP">
       <div class="container">
-      <?php 
+          <?php 
  $id_artikel=$_GET['id'];
  $sql=mysqli_query($koneksi,"select * from Artikel where id_artikel='$id_artikel'");
  while($row=mysqli_fetch_array($sql))
  {
   $judul=$row['judul_artikel'];
-  $isi=$row['isi_artikel'];
+  $isi=$row['deskripsi'];
   $gambar=$row['gambar'];
  ?>
-          <h3 class="text-center  " style="margin:50px 0 80px 0;"><?php echo $judul; ?></h3>
-
+          <h3 class="text-center  " style="margin:50px 0 80px 0;"><?php echo $judul; ?></h3>    
+      <div class="pict-info">
           <div class="row justify-content-md-center">
-             <img src="admin/news/<?php echo $gambar; ?>" align="left" height="500px">
-          <div class="col-md-12">
-           
-          <p class=" text-justify">
-          <?php
+              <div class="col-md-12">
+                  <img src="admin/artikel/<?php echo $gambar; ?>" alt="gambar" style="width:100%">
+              </div>
+          </div>  
+         </div>  
+         <br>
+         <br>    
+      <div class="selayang text-justify">
+          
+          <p class="text-justify">
+            <?php
           echo $isi;
           ?>
-            </p>
-             
-          </div>
-        </div>  
-        <?php 
+          </p>
+          </div> 
+          
+       
+           <?php 
       }
-        ?>     
-    </div>
-</section>      
+        ?>  
+     </div>
+ </section>      
         
-<section class=" video" style="margin:30px 0 80px 0;">
-      <h3 class="text-center" style="padding:20px 0 10px 0; color:white;">Video Testimoni</h3>
-        <div class="main-content">
-        <div class="video-responsive">
-           <iframe width="560" height="315" src="https://www.youtube.com/embed/wq7A1Iby__I" frameborder="0" allowfullscreen></iframe>
-          </div>
-         </div>
-</section>        
-      
+        
+
 <?php 
   include "footer.php";
  ?>

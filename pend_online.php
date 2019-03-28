@@ -23,95 +23,7 @@ include "menu.php";
     <div class="container">
         <h3 class="text-center" style="margin:50px 0 80px 0;">Pendaftaran Online</h3>
         <div class="respon-form row" >
-          <div class="col-md-4">
-            <div class="data-pribadi">
-                <h5 class="text-center" style="margin-bottom: 40px;">Biodata Diri</h5>
-              <label>Program Studi</label><br>
-                <select name="studi" class="form-control gap" required>
-                <option></option>
-                <option>Teknik Industri</option>
-                <option>Teknik Mesin</option>
-                <option>Teknik Sipil</option>
-                <option>Teknik Kimia</option>
-                <option>Informatika</option>
-                <option>Manajemen</option>
-                <option>Elektronika</option>
-                <option>Perencanaan Wilayah & Kota</option>
-                <option>Otomotif</option>
-                </select>
-              <label>Program Pilihan</label> <br>
-                <select name="program" class="form-control gap" required>
-                <option></option>
-                <option>Regular</option>
-                <option>P2k</option>
-                </select>
-              <label>Nama Lengkap</label><br>
-                <input type="text" class="form-control gap" placeholder="Isi Nama Lengkap anda" required>
-              <label>Tempat Lahir</label><br>
-                <input type="text" class="form-control gap" required>
-              <label>Tanggal Lahir</label><br>
-                <input type="date" class="form-control gap" required>
-              <label>Alamat Lengkap</label><br>
-                <textarea class="form-control gap" rows="5" required></textarea>
-              <label>Jenis Kelamin</label><br>
-                <select name="gender" class="form-control gap" required>
-                <option></option>
-                <option>Laki - Laki</option>
-                <option>Perempuan</option>
-                </select>
-              <label>Agama</label><br>
-                <select name="agama" class="form-control gap" required>
-                <option></option>
-                <option>Islam</option>
-                <option>Kristen</option>
-                <option>Protestan</option>
-                <option>Hindu</option>
-                <option>Budha</option>
-                </select>
-              <label>Handphone</label><br>
-                <input type="tel" class="form-control gap" required>
-              <label>Email</label><br>
-                <input type="email" class="form-control gap" required>
-              </div>
-            </div>
-          
-          <div class="col-md-4">
-              <div class="sekolah">
-              <h5 class="text-center">Data Sekolah</h5>
-              <label>Nama Sekolah Asal</label>
-                  <input type="text" class="form-control gap" required>
-              <label>Alamat Sekolah</label><br>
-                  <textarea class="form-control gap" rows="5" required></textarea>
-              <label>Provinsi Sekolah Asal</label><br>
-                  <input type="text" class="form-control gap" required>
-              <label>Jenis Sekolah</label><br>
-                  <select name="jenis" class="form-control gap" required>
-                  <option></option>
-                  <option>SMA/SMU</option>
-                  <option>SMK/Kejuruan</option>
-                  </select>
-               <label>Jurusan</label> <br>
-                  <select name="jurusan" class="form-control gap" required>
-                  <option></option>
-                  <option>SMA IPA</option>
-                  <option>SMA IPS</option>
-                  <option>SMA Bahasa</option>
-                  <option>SMK Teknik</option>
-                  <option>SMK Pertanian</option>
-                  </select>
-              <label>Tahun Lulus</label><br>
-                  <input type="text" class="form-control gap" required>
-              <label>Nilai Nem</label><br>
-                  <input type="text" class="form-control gap" required>
-              <label>No.Ijazah</label><br>
-                  <input type="text" class="form-control gap" required>
-                  
-              <label>Prestasi yang diraih</label>
-                  <textarea class="form-control gap" rows="5" required></textarea>
-              </div>
-            </div>
-        
-            <div class="col-md-4">
+            <div class="col-lg-8">
             <div class="data-ortu">
                 <h5 class="text-center">Data Orang Tua</h5>
                 <label>Nama Ayah</label><br>
@@ -140,12 +52,11 @@ include "menu.php";
                 <option> 5 Juta - 10 Juta</option>
                 <option> >10 Juta</option>
                 </select>
+                <button class="btn-form" type="submit" name="kirim" value="Daftar">Submit</button>
+            <button class="btn-form" type="submit" name="kirim" value="Daftar">Reset</button>
                 </div>
             </div>
-            <div class="col-md-12">
-            <button class="btn-form" type="submit" name="kirim" value="Daftar">Submit</button>
-            <button class="btn-form" type="submit" name="kirim" value="Daftar">Reset</button>
-            </div>
+         
           </div>
     </div>
 </section>

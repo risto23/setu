@@ -1,3 +1,6 @@
+<?php
+include ('admin/fungsi/config.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,19 +25,19 @@ include "menu.php";
 <section class="isi-TIP">
       <div class="container">
           <?php 
- $id_artikel=$_GET['id'];
- $sql=mysqli_query($koneksi,"select * from Artikel where id_artikel='$id_artikel'");
+ 
+ $sql=mysqli_query($koneksi,"select * from struktur");
  while($row=mysqli_fetch_array($sql))
  {
-  $judul=$row['judul_artikel'];
-  $isi=$row['isi_artikel'];
+  $judul=$row['judul_struktur'];
+  $isi=$row['deskripsi'];
   $gambar=$row['gambar'];
  ?>
           <h3 class="text-center  " style="margin:50px 0 80px 0;"><?php echo $judul; ?></h3>    
       <div class="pict-info">
           <div class="row justify-content-md-center">
               <div class="col-md-12">
-                  <img src="admin/artikel/<?php echo $gambar; ?>" alt="gambar" style="width:100%">
+                  <img src="admin/struktur/<?php echo $gambar; ?>" alt="gambar" style="width:100%">
               </div>
           </div>  
          </div>      
