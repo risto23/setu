@@ -8,7 +8,7 @@ if(isset($_POST['inputpengumuman']))
 	$judul_pengumuman = $_POST['judul_pengumuman'];
 	$date_pengumuman = $_POST['date_pengumuman'];
 	$id_login = $_POST['id_login'];
-	$pengumuman =  $_POST['pengumuman'];
+	$pengumuman =  addslashes($_POST['pengumuman']);
 
 	$data = mysqli_query($koneksi,"insert into pengumuman (gambar,judul_pengumuman,tanggal,id_login,deskripsi) values ('$img_pengumuman','$judul_pengumuman','$date_pengumuman','$id_login','$pengumuman')");
 
@@ -28,7 +28,7 @@ else if(isset($_POST['editpengumuman']))
 	$judul_pengumuman = $_POST['judul_pengumuman'];
 	$date_pengumuman = $_POST['date_pengumuman'];
 	$id_login = $_POST['id_login'];
-	$pengumuman =  $_POST['pengumuman'];
+	$pengumuman =  addslashes($_POST['pengumuman']);
 	$id_pengumuman = $_POST['id_pengumuman'];
 
 	if(!empty($img_pengumuman))

@@ -8,7 +8,7 @@ if(isset($_POST['inputstruktur']))
 	$judul_struktur = $_POST['judul_struktur'];
 	$date_struktur = $_POST['date_struktur'];
 	$id_login = $_POST['id_login'];
-	$struktur =  $_POST['struktur'];
+	$struktur = addslashes( $_POST['struktur']);
 
 	$data = mysqli_query($koneksi,"insert into struktur (gambar,judul_struktur,tanggal,id_login,deskripsi) values ('$img_struktur','$judul_struktur','$date_struktur','$id_login','$struktur')");
 
@@ -28,7 +28,7 @@ else if(isset($_POST['editstruktur']))
 	$judul_struktur = $_POST['judul_struktur'];
 	$date_struktur = $_POST['date_struktur'];
 	$id_login = $_POST['id_login'];
-	$struktur =  $_POST['struktur'];
+	$struktur =  addslashes($_POST['struktur']);
 	$id_struktur = $_POST['id_struktur'];
 
 	if(!empty($img_struktur))

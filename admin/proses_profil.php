@@ -8,7 +8,7 @@ if(isset($_POST['inputprofil']))
 	$judul_profil = $_POST['judul_profil'];
 	$date_profil = $_POST['date_profil'];
 	$id_login = $_POST['id_login'];
-	$profil =  $_POST['profil'];
+	$profil =  addslashes($_POST['profil']);
 
 	$data = mysqli_query($koneksi,"insert into profil (gambar,judul_profil,tanggal,id_login,deskripsi) values ('$img_profil','$judul_profil','$date_profil','$id_login','$profil')");
 
@@ -28,7 +28,7 @@ else if(isset($_POST['editprofil']))
 	$judul_profil = $_POST['judul_profil'];
 	$date_profil = $_POST['date_profil'];
 	$id_login = $_POST['id_login'];
-	$profil =  $_POST['profil'];
+	$profil = addslashes( $_POST['profil']);
 	$id_profil = $_POST['id_profil'];
 
 	if(!empty($img_profil))

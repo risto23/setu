@@ -8,7 +8,7 @@ if(isset($_POST['inputartikel']))
 	$judul_artikel = $_POST['judul_artikel'];
 	$date_artikel = $_POST['date_artikel'];
 	$id_login = $_POST['id_login'];
-	$artikel =  $_POST['artikel'];
+	$artikel =  addslashes($_POST['artikel']);
 
 	$data = mysqli_query($koneksi,"insert into artikel (gambar,judul_artikel,tanggal,id_login,deskripsi) values ('$img_artikel','$judul_artikel','$date_artikel','$id_login','$artikel')");
 
@@ -28,8 +28,9 @@ else if(isset($_POST['editartikel']))
 	$judul_artikel = $_POST['judul_artikel'];
 	$date_artikel = $_POST['date_artikel'];
 	$id_login = $_POST['id_login'];
-	$artikel =  $_POST['artikel'];
+	$artikel = addslashes ( $_POST['artikel']);
 	$id_artikel = $_POST['id_artikel'];
+
 
 	if(!empty($img_artikel))
 	{

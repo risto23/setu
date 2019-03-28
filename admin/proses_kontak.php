@@ -8,7 +8,7 @@ if(isset($_POST['inputkontak']))
 	$judul_kontak = $_POST['judul_kontak'];
 	$date_kontak = $_POST['date_kontak'];
 	$id_login = $_POST['id_login'];
-	$kontak =  $_POST['kontak'];
+	$kontak =  addslashes($_POST['kontak']);
 
 	$data = mysqli_query($koneksi,"insert into kontak (gambar,judul_kontak,tanggal,id_login,deskripsi) values ('$img_kontak','$judul_kontak','$date_kontak','$id_login','$kontak')");
 
@@ -28,7 +28,7 @@ else if(isset($_POST['editkontak']))
 	$judul_kontak = $_POST['judul_kontak'];
 	$date_kontak = $_POST['date_kontak'];
 	$id_login = $_POST['id_login'];
-	$kontak =  $_POST['kontak'];
+	$kontak = addslashes( $_POST['kontak']);
 	$id_kontak = $_POST['id_kontak'];
 
 	if(!empty($img_kontak))

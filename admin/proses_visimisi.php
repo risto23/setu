@@ -8,7 +8,7 @@ if(isset($_POST['inputvisimisi']))
 	$judul_visimisi = $_POST['judul_visimisi'];
 	$date_visimisi = $_POST['date_visimisi'];
 	$id_login = $_POST['id_login'];
-	$visimisi =  $_POST['visimisi'];
+	$visimisi =  addslashes($_POST['visimisi']);
 
 	$data = mysqli_query($koneksi,"insert into visimisi (gambar,judul_visimisi,tanggal,id_login,deskripsi) values ('$img_visimisi','$judul_visimisi','$date_visimisi','$id_login','$visimisi')");
 
@@ -28,7 +28,7 @@ else if(isset($_POST['editvisimisi']))
 	$judul_visimisi = $_POST['judul_visimisi'];
 	$date_visimisi = $_POST['date_visimisi'];
 	$id_login = $_POST['id_login'];
-	$visimisi =  $_POST['visimisi'];
+	$visimisi =  addslashes($_POST['visimisi']);
 	$id_visimisi = $_POST['id_visimisi'];
 
 	if(!empty($img_visimisi))

@@ -8,7 +8,7 @@ if(isset($_POST['inputsyarat']))
 	$judul_syarat = $_POST['judul_syarat'];
 	$date_syarat = $_POST['date_syarat'];
 	$id_login = $_POST['id_login'];
-	$syarat =  $_POST['syarat'];
+	$syarat = addslashes( $_POST['syarat']);
 
 	$data = mysqli_query($koneksi,"insert into syarat (gambar,judul_syarat,tanggal,id_login,deskripsi) values ('$img_syarat','$judul_syarat','$date_syarat','$id_login','$syarat')");
 
@@ -28,7 +28,7 @@ else if(isset($_POST['editsyarat']))
 	$judul_syarat = $_POST['judul_syarat'];
 	$date_syarat = $_POST['date_syarat'];
 	$id_login = $_POST['id_login'];
-	$syarat =  $_POST['syarat'];
+	$syarat =  addslashes($_POST['syarat']);
 	$id_syarat = $_POST['id_syarat'];
 
 	if(!empty($img_syarat))
