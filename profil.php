@@ -5,7 +5,7 @@ include ('admin/fungsi/config.php');
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-      <title>Teknologi Industri Pertanian</title>
+      <title>Profil</title>
       <link rel="icon" type="image" href="Images/icon.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,7 +37,7 @@ include "menu.php";
       <div class="pict-info">
           <div class="row justify-content-md-center">
               <div class="col-md-12">
-                  <img src="admin/profil/<?php echo $gambar; ?>" alt="gambar" style="width:100%">
+                  <img src="admin/profil/<?php echo $gambar; ?>" alt="gambar" style="width:30%">
               </div>
           </div>  
          </div>      

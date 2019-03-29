@@ -82,14 +82,7 @@ include "menu.php";
 </section>
                         
 
-<section style="margin:30px 0 80px 0;">
-      <h3 class="text-center" style="padding:20px 0 10px 0; color:black;">Video Testimoni</h3>
-        <div class="main-content">
-        <div class="video-responsive">
-           <iframe width="560" height="315" src="https://www.youtube.com/embed/wq7A1Iby__I" frameborder="0" allowfullscreen></iframe>
-          </div>
-         </div>
-</section>        
+       
  <hr>
 <!-- SECTION -->
 <div class="section" style="padding-top:0; margin-top:0;">

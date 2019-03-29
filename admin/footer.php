@@ -1,6 +1,6 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-    	<b>Copyright © 2017</b>
+    	<b>Copyright © 2019</b>
     </div>
-    <strong>Web Akademik</strong>
+    <strong>Kelurahan Setu</strong>
 </footer>

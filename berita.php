@@ -5,7 +5,7 @@ include ('admin/fungsi/config.php');
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-      <title>Teknologi Industri Pertanian</title>
+      <title>Berita</title>
       <link rel="icon" type="image" href="Images/icon.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,78 +22,42 @@ include ('admin/fungsi/config.php');
  include "header.php";
 include "menu.php";
  ?>      
-<section class="isi-TIP">
-      <div class="container">
-          <?php 
- 
- $sql=mysqli_query($koneksi,"select * from artikel");
- while($row=mysqli_fetch_array($sql))
- {
-  $judul=$row['judul_artikel'];
-  $isi=$row['deskripsi'];
-  $gambar=$row['gambar'];
- ?>
-          <h3 class="text-center  " style="margin:50px 0 80px 0;"><?php echo $judul; ?></h3>    
-      <div class="pict-info">
-          <div class="row justify-content-md-center">
-              <div class="col-md-12">
-                  <img src="admin/artikel/<?php echo $gambar; ?>" alt="gambar" style="width:100%">
-              </div>
-          </div>  
-         </div>      
-      <div class="selayang text-justify">
-          
-          <p class="text-justify">
-            <?php
-          echo $isi;
-          ?>
-          </p>
-          </div> 
-          
-       
-           <?php 
-      }
-        ?>  
-     </div>
- </section>      
+ <section>
+      
+    <div class="container">
+       <h3 class="text-center" style="padding:20px 0 10px 0; color:black;">Berita</h3>
+            <div class="row justify-content-lg-center gambar">
+             <?php
+             $kueri = mysqli_query($koneksi," SELECT * FROM Artikel where konfirmasi='1' ");
+              while ($baris=mysqli_fetch_array($kueri)) {
+                $gambar=$baris['gambar'];
+                $judul=$baris['judul_artikel'];
+                $isi=$baris['deskripsi'];
+                ?>
+              <div class="col-md-3 mobile">
+                  <div class="isi text-center">
+                      <a href="artikel_detail.php?id=<?php echo $baris['id_artikel']; ?>" ><img src="admin/artikel/<?php echo $gambar ;?>" width="100px" class="img-responsive"> <h4><?php echo $judul;?></h4></a>
+                      <div>
+                     <?php
+                     echo substr($isi, 0,100);
+                      ?>
+                      </div>
+                  </div>
+                </div>
+               
+                <?php 
+              }
+                ?>   
+                </div>
+
+                </div>
+</section>
+                 
         
 
-<div class="sticky-footer">
-    <div class="container">
-    <div class="row text-center">
-        <div class="col-md-4 footer">
-         <h5>Alamat Kampus</h5>
-             <ul class="anak"> 
-                 <li><i class="fa fa-map-marker" aria-hidden="true"></i> Jl. Raya Puspiptek Serpong, Tangerang Selatan - Banten</li>
-                 <li><i class="fa fa-phone" aria-hidden="true"></i>(021)7560542</li>
-                 <li><i class="fa fa-phone" aria-hidden="true"></i>(021) 756054</li>
-             </ul>
-        </div>
-        <div class="col-md-4 footer">
-             <h5>Fasilitas</h5>
-				<ul >
-                    <li>Fasilitas Akademik</li>
-                    <li>Fasilitas Kemahasiswaan</li>
-                    <li>Fasilitas Umum</li>
-                </ul>
-        </div>
-        <div class="col-md-4 footer">
-        <h5>Kemahasiswaan</h5>
-				<ul >
-                    <li>DPKM</li>
-                    <li>CDC</li>
-                    <li>Beasiswa</li>
-                    <li>Prestasi Mahasiswa</li>
-                    <li>Kalender Akademik</li>
-                    <li>Galeri</li>
-                </ul>
-        </div>
-        <div class="col-md-12 copyright">
-            <p>Hak Cipta &copy;Yes Man</p>
-        </div>       
-    </div>     
-    </div>
- </div>
+<?php 
+include "footer.php"
+ ?>
 <!-- footer -->
 	<!--/footer-->   
     <!-- Optional JavaScript -->

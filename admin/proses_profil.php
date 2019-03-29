@@ -41,7 +41,7 @@ else if(isset($_POST['editprofil']))
 			echo"<script> alert('profil Berhasil Diinput') ; window.location.href='profil.php'; </script>";
 		}
 		else {
-			echo"<script> alert('profil Gagal Diinput, Silahkan ulangi lagi') ; window.location.href='profil.php'; </script>";
+			echo"<script> alert('profil Gagal Diinput, Silahkan ulangi lagi1') ; window.location.href='profil.php'; </script>";
 		}	
 	}
 	else {
