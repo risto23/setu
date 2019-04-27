@@ -69,6 +69,11 @@
           </ul>
         </li>
         <li>
+          <a href="content.php">
+            <i class="fa fa-edit fa-fw"></i> <span>Konten</span>
+          </a>
+        </li>
+        <li>
           <a href="user.php">
             <i class="fa fa-users"></i> <span>User</span>
           </a>
