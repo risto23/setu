@@ -32,18 +32,18 @@ include "menu.php";
 <section class="isi-softskill">
       <div class="container">
       <?php 
- $id_artikel=$_GET['id'];
- $sql=mysqli_query($koneksi,"select * from Artikel where id='$id_artikel'");
+ $id_post=$_GET['id'];
+ $sql=mysqli_query($koneksi,"select * from konten where id='$id_post'");
  while($row=mysqli_fetch_array($sql))
  {
-  $judul=$row['judul_artikel'];
-  $isi=$row['isi_artikel'];
-  $gambar=$row['gambar'];
+  $judul=$row['judul_konten'];
+  $isi=$row['isi_konten'];
+  
  ?>
           <h3 class="text-center  " style="margin:50px 0 80px 0;"><?php echo $judul; ?></h3>
 
           <div class="row justify-content-md-center">
-             <img src="admin/news/<?php echo $gambar; ?>" align="left" height="500px">
+             <img src="admin/news/logo-tangsel.png" align="left" height="500px">
           <div class="col-md-12">
            
           <p class=" text-justify">
@@ -60,15 +60,7 @@ include "menu.php";
     </div>
 </section>      
         
-<section class=" video" style="margin:30px 0 80px 0;">
-      <h3 class="text-center" style="padding:20px 0 10px 0; color:white;">Video Testimoni</h3>
-        <div class="main-content">
-        <div class="video-responsive">
-           <iframe width="560" height="315" src="https://www.youtube.com/embed/wq7A1Iby__I" frameborder="0" allowfullscreen></iframe>
-          </div>
-         </div>
-</section>        
-      
+  
 <?php 
   include "footer.php";
  ?>
