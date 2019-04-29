@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2019 at 06:24 AM
+-- Generation Time: Apr 29, 2019 at 08:53 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -64,6 +64,21 @@ CREATE TABLE `kontak` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `konten`
+--
+
+CREATE TABLE `konten` (
+  `id_konten` int(11) NOT NULL,
+  `judul_konten` varchar(50) DEFAULT NULL,
+  `deskripsi` text,
+  `tanggal` date NOT NULL,
+  `id_login` int(11) NOT NULL,
+  `konfirmasi` int(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login`
 --
 
@@ -82,6 +97,19 @@ CREATE TABLE `login` (
 INSERT INTO `login` (`id_login`, `nama`, `username`, `password`, `izin`) VALUES
 (5, 'Risto', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
 (6, 'Sekdes', 'root', '63a9f0ea7bb98050796b649e85481845', 'Super Admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu`
+--
+
+CREATE TABLE `menu` (
+  `id_menu` int(11) NOT NULL,
+  `menu_utama` varchar(50) NOT NULL,
+  `url` varchar(50) NOT NULL,
+  `id_login` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -220,6 +248,19 @@ CREATE TABLE `sturuktur` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `submenu`
+--
+
+CREATE TABLE `submenu` (
+  `id_submenu` int(11) NOT NULL,
+  `id_menu` int(11) NOT NULL,
+  `submenu` varchar(50) NOT NULL,
+  `submenu_url` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `syarat`
 --
 
@@ -264,10 +305,22 @@ ALTER TABLE `kontak`
   ADD PRIMARY KEY (`id_kontak`);
 
 --
+-- Indexes for table `konten`
+--
+ALTER TABLE `konten`
+  ADD PRIMARY KEY (`id_konten`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id_login`);
+
+--
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id_menu`);
 
 --
 -- Indexes for table `nama`
@@ -318,6 +371,12 @@ ALTER TABLE `sturuktur`
   ADD PRIMARY KEY (`id_struktur`);
 
 --
+-- Indexes for table `submenu`
+--
+ALTER TABLE `submenu`
+  ADD PRIMARY KEY (`id_submenu`);
+
+--
 -- Indexes for table `syarat`
 --
 ALTER TABLE `syarat`
@@ -346,10 +405,22 @@ ALTER TABLE `kontak`
   MODIFY `id_kontak` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `konten`
+--
+ALTER TABLE `konten`
+  MODIFY `id_konten` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `nama`
@@ -398,6 +469,12 @@ ALTER TABLE `sambutan`
 --
 ALTER TABLE `sturuktur`
   MODIFY `id_struktur` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `submenu`
+--
+ALTER TABLE `submenu`
+  MODIFY `id_submenu` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `syarat`

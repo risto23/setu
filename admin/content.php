@@ -84,26 +84,12 @@ session_start();
                     while($datakonten = mysqli_fetch_array($datalist))
                     {
                   ?>
-                    <form action="proses_konten.php" method="post" enctype="multipart/form-data">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-camera" title="Foto Berita"> </i>
-                        </span>
-                        <input name="img_konten" type="file" class="form-control" placeholder="Foto konten" accept="image/x-png,image/gif,image/jpeg">
-                        <input type="text" class="form-control" value="Jika tidak ingin mengganti foto, biarkan form kosong" readonly="">
-                        <input name="img_konten_old" type="hidden" class="form-control" placeholder="Foto konten" value="<?php echo $datakonten['gambar'];?>">
-                        <input type="hidden" name="id_konten" value="<?php echo $datakonten['id_konten'];?>">
-                        <input type="hidden" name="id_login" value="<?php echo $_SESSION['user']; ?>">
-                      </div>
-                       <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-book" title="Judul Halaman"> </i>
-                        </span>
-                        <input name="judul_konten" type="text" class="form-control" placeholder="Judul Halaman" value="<?php echo $datakonten['judul_halaman'];?>">
-                      </div>
+                    <form action="proses_konten.php" method="post" enctype="multipart/form-data">           
                       <div class="input-group">
                         <span class="input-group-addon">
                           <i class="fa fa-book" title="Judul Berita"> </i>
+                            <input type="hidden" name="id_konten" value="<?php echo $datakonten['id_konten'];?>">
+                        <input type="hidden" name="id_login" value="<?php echo $_SESSION['user']; ?>">
                         </span>
                         <input name="judul_konten" type="text" class="form-control" placeholder="Judul konten" value="<?php echo $datakonten['judul_konten'];?>">
                       </div>
@@ -154,22 +140,10 @@ session_start();
                     <form action="proses_konten.php" method="post" enctype="multipart/form-data">
                       <div class="input-group">
                         <span class="input-group-addon">
-                          <i class="fa fa-camera" title="Foto Berita"> </i>
-                        </span>
-                        <input name="img_konten" type="file" class="form-control" placeholder="Foto konten" accept="image/x-png,image/gif,image/jpeg">
-                        <input type="hidden" name="id_login" value="<?php echo $_SESSION['user']; ?>">
-                      </div>
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-book" title="Judul Halaman"> </i>
-                        </span>
-                        <input name="judul_konten" type="text" class="form-control" placeholder="Judul Halaman" value="">
-                      </div>
-                      <div class="input-group">
-                        <span class="input-group-addon">
                           <i class="fa fa-book" title="Judul Berita"> </i>
                         </span>
                         <input name="judul_konten" type="text" class="form-control" placeholder="Judul konten" value="">
+                          <input type="hidden" name="id_login" value="<?php echo $_SESSION['user']; ?>">
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">
@@ -221,8 +195,6 @@ session_start();
                     <tr>
                       <th>No</th>
                       <th>Tanggal konten</th>
-                      <th>Gambar</th>
-                      <th>Judul konten</th>
                       <th>Judul konten</th>
                       <th>Isi konten</th>
                       <th>Status</th>
@@ -239,8 +211,6 @@ session_start();
                       <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo fungsi_tgl($datakonten['tanggal']); ?></td>
-                        <td><img src="konten/<?php echo $datakonten['gambar']; ?>" width="100px"></td>
-                        <td><?php echo $datakonten['judul_halaman']; ?></td>
                         <td><?php echo $datakonten['judul_konten']; ?></td>
                         <td><?php echo $datakonten['deskripsi'];?></td>
                         <?php 
