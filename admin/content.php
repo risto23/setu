@@ -128,7 +128,7 @@ session_start();
                       <?php 
                       } ?>
                       <textarea class="textarea" name="konten" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"><?php echo $datakonten['deskripsi'];?></textarea>
-                      <a href="konten.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
+                      <a href="content.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
                       <button type="submit" name="editkonten" class="btn btn-info " style="float: right;">Simpan</button>
                     </form>
                   <?php
@@ -182,7 +182,7 @@ session_start();
                       <?php 
                       } ?>
                       <textarea class="textarea" name="konten" placeholder="Berita apa hari ini?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;border: 1px solid #dddddd; padding: 10px;"></textarea>
-                      <a href="konten.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
+                      <a href="content.php" class="btn btn-default" style="float: right; margin-left: 10px;"> Batal </a>
                       <button type="submit" name="inputkonten" class="btn btn-info " style="float: right;">Simpan</button>
                     </form>
                   <?php
@@ -233,7 +233,7 @@ session_start();
                             </button>
                             <ul class="dropdown-menu">
                               <li>
-                                <a href="konten.php?id=<?php echo $datakonten['id_konten']; ?>">Edit</a>
+                                <a href="content.php?id=<?php echo $datakonten['id_konten']; ?>">Edit</a>
                               </li>
                               <?php 
                                  $login=$_SESSION['user'];
@@ -241,13 +241,13 @@ session_start();
                                  {
                                   ?>
                                   <li>
-                                <a href="konten.php?id=<?php echo $datakonten['id_konten']; ?>">Konfirmasi</a>
+                                <a href="content.php?id=<?php echo $datakonten['id_konten']; ?>">Konfirmasi</a>
                                 </li>
                                 <?php
                                  }
                                ?>
                               <li>
-                                <a href="hapus.php?id_hapus=<?php echo $datakonten['id_konten']; ?>">Hapus</a>
+                                <a href="proses_konten.php?id_hapus=<?php echo $datakonten['id_konten']; ?>">Hapus</a>
                               </li>
 
                             </ul>

@@ -1,3 +1,6 @@
+<?php 
+include ('admin/fungsi/config.php');
+?>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#37474F; color:white">
     <div class="container">
         
@@ -10,10 +13,6 @@
             <li class="nav-item ">
             <a class="nav-link" href="index.php">Beranda</a>
             </li>
-            <li class="nav-item ">
-            <a class="nav-link" href="sambutan.php">Sambutan</a>
-            </li>
-
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Profil
@@ -26,26 +25,33 @@
           
         </div>
             </li>
+<?php 
+ $sql=mysqli_query($koneksi,"select * from menu ");
+ while($row=mysqli_fetch_array($sql))
+ {
+  $menu=$row['menu_utama'];
+  $url=$row['url'];
+  
+ ?> 
             <li class="nav-item ">
-            <a class="nav-link" href="pelayanan.php">Pelayanan</a>
+            <a class="nav-link" href=<?php echo "$url"; ?>><?php echo "$menu"; ?></a>
             </li>
-            <li class="nav-item ">
-            <a class="nav-link" href="pengaduan.php">Pengaduan</a>
-            </li>
-            <li class="nav-item ">
-            <a class="nav-link" href="berita.php">Berita</a>
-            </li>
-            <li class="nav-item ">
-            <a class="nav-link" href="publikasi.php">Publikasi</a>
-            </li>
-            <li class="nav-item ">
-            <a class="nav-link" href="pengumuman.php">Pengumuman</a>
-            </li>
-            <li class="nav-item ">
-            <a class="nav-link" href="syarat.php">Syarat Pengurusan</a>
-            </li>
-             <li class="nav-item">
-            <a class="nav-link" href="admin/index.php">Login</a>
+
+           
+<?php 
+}
+?>
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Kelurahan
+            </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="profil.php">Profil Kelurahan</a>
+           <a class="dropdown-item" href="visimisi.php">Visi & Misi</a>
+          <a class="dropdown-item" href="struktur.php">Struktur Organisasi</a>
+           <a class="dropdown-item" href="kontak.php">Kontak</a>
+          
+        </div>
             </li>
         </ul>
      </div>
